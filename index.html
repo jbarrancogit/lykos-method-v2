@@ -1,0 +1,3487 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="LYKOS METHOD — Entrenamiento online que respeta tu cuerpo. Método de Enzo Nievas: biomecánica, fuerza inteligente y movimiento eficiente. Desde Mendoza al mundo." />
+<meta name="theme-color" content="#060606" />
+<meta property="og:title" content="LYKOS METHOD — Entrená con un método que respeta tu cuerpo" />
+<meta property="og:description" content="Planificación, diagnóstico y seguimiento personalizados por Enzo Nievas. Desde Mendoza al mundo." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="logo.jpg" />
+<title>LYKOS METHOD · Enzo Nievas — Entrenamiento online personalizado</title>
+<link rel="icon" href="logo.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg: #050505;
+  --bg-2: #0b0b0b;
+  --bg-3: #131313;
+  --bg-4: #1a1a1a;
+  --line: #1c1c1c;
+  --line-2: #2a2a2a;
+  --line-3: #3a3a3a;
+  --gold: #d4a94a;
+  --gold-b: #f2c15e;
+  --gold-dim: #8a6c2a;
+  --silver: #cfcfcf;
+  --text: #f6f6f6;
+  --text-2: #b0b0b0;
+  --text-3: #6a6a6a;
+  --text-4: #4a4a4a;
+  --red: #e46b4c;
+  --green: #7cb98e;
+  --display: "Fraunces", "Times New Roman", serif;
+  --body: "Hanken Grotesk", -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --maxw: 1380px;
+  --pad: clamp(1.25rem, 4vw, 3rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html.no-scroll, body.no-scroll { overflow: hidden; }
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-feature-settings: "ss01", "cv11";
+  position: relative;
+}
+
+::selection { background: var(--gold); color: var(--bg); }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* ============ Grain overlay ============ */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+  animation: grain-shift 9s steps(8) infinite;
+}
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-4%, -2%); }
+  20%  { transform: translate(2%, 4%); }
+  30%  { transform: translate(-2%, 2%); }
+  40%  { transform: translate(4%, -4%); }
+  50%  { transform: translate(-4%, 4%); }
+  60%  { transform: translate(2%, -2%); }
+  70%  { transform: translate(-2%, -4%); }
+  80%  { transform: translate(4%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ============ Custom cursor ============ */
+.cursor, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease;
+}
+.cursor {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s ease, border-color 0.3s ease, transform 0.12s linear;
+}
+.cursor-ring.grow {
+  width: 64px; height: 64px;
+  opacity: 0.9;
+  border-color: var(--gold-b);
+}
+.cursor-ring.shrink {
+  width: 16px; height: 16px;
+  opacity: 0.2;
+}
+@media (hover: none), (max-width: 900px) {
+  .cursor, .cursor-ring { display: none; }
+}
+
+/* ============ Preloader ============ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+}
+.preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader .plogo {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+}
+.preloader .plogo em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+.preloader .pbar {
+  width: min(320px, 60vw);
+  height: 1px;
+  background: var(--line-2);
+  position: relative;
+  overflow: hidden;
+}
+.preloader .pbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  animation: pbar-sweep 1.4s var(--ease-soft) infinite;
+}
+@keyframes pbar-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.preloader .pcount {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+
+/* ============ Typography ============ */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.8rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+h1 { font-size: clamp(3rem, 8vw, 7rem); letter-spacing: -0.045em; }
+h2 { font-size: clamp(2.3rem, 5.4vw, 4.8rem); line-height: 1.02; letter-spacing: -0.035em; }
+h3 { font-size: clamp(1.3rem, 2.1vw, 1.8rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; }
+h4 { font-size: clamp(1.05rem, 1.5vw, 1.2rem); font-weight: 500; line-height: 1.3; }
+em.accent, em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-b);
+}
+
+.display-hairline {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ============ Buttons ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.05rem 1.75rem;
+  border-radius: 2px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line-2);
+  transition: color 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn .arrow {
+  display: inline-block;
+  transition: transform 0.4s var(--ease);
+}
+.btn:hover .arrow { transform: translateX(5px); }
+.btn-primary {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+.btn-primary:hover { background: var(--gold-b); border-color: var(--gold-b); }
+.btn-ghost {
+  border-color: var(--line-2);
+  padding: 0.7rem 1.1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-outline { border-color: var(--line-3); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Magnetic wrapper inherits from .btn — just adds transform smoothing */
+.magnetic {
+  display: inline-flex;
+  will-change: transform;
+  transition: transform 0.25s var(--ease);
+}
+
+/* ============ Scroll progress bar ============ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-b));
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* ============ Side dot nav ============ */
+.dot-nav {
+  position: fixed;
+  right: clamp(1.1rem, 2.2vw, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 45;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease-soft);
+}
+.dot-nav.visible { opacity: 1; pointer-events: auto; }
+.dot-nav a {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--line-3);
+  background: transparent;
+  transition: all 0.45s var(--ease);
+  position: relative;
+}
+.dot-nav a::after {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--text-3);
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.dot-nav a:hover { border-color: var(--gold); transform: scale(1.3); }
+.dot-nav a:hover::after { opacity: 1; }
+.dot-nav a.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.55);
+}
+.dot-nav a.active::after { opacity: 1; color: var(--gold); }
+@media (max-width: 1000px) { .dot-nav { display: none; } }
+
+/* ============ Top nav ============ */
+nav.top {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 1.25rem 0;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  background: rgba(5, 5, 5, 0.45);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s ease, background 0.4s ease, padding 0.4s ease;
+}
+nav.top.scrolled {
+  border-bottom-color: var(--line);
+  background: rgba(5, 5, 5, 0.88);
+  padding: 0.85rem 0;
+}
+nav.top .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+nav .brand {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+nav .brand em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+  margin-left: 0.35rem;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+nav .brand-tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: var(--text-3);
+  margin-left: 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--line-2);
+  text-transform: uppercase;
+}
+@media (max-width: 700px) { nav .brand-tag { display: none; } }
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+nav ul a {
+  color: var(--text-2);
+  transition: color 0.25s ease;
+  position: relative;
+  padding: 0.3rem 0;
+}
+nav ul a:hover { color: var(--text); }
+nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: -2px;
+  height: 1px;
+  background: var(--gold);
+  transition: right 0.35s var(--ease);
+}
+nav ul a:hover::after { right: 0; }
+nav .right { display: flex; align-items: center; gap: 1rem; }
+nav .lang {
+  display: flex;
+  border: 1px solid var(--line-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+nav .lang button {
+  padding: 0.45rem 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  color: var(--text-3);
+  transition: all 0.25s ease;
+}
+nav .lang button.active {
+  background: var(--gold);
+  color: var(--bg);
+}
+@media (max-width: 960px) {
+  nav ul { display: none; }
+}
+
+/* ============ Section shell ============ */
+section {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  position: relative;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.section-head .num {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  background: rgba(212, 169, 74, 0.08);
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(212, 169, 74, 0.25);
+  border-radius: 2px;
+}
+.section-title {
+  max-width: 920px;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.section-title p {
+  margin-top: 1.4rem;
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  color: var(--text-2);
+  max-width: 620px;
+}
+
+/* ============ Reveal ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
+.reveal.d4 { transition-delay: 0.4s; }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(1100px 650px at 80% 20%, rgba(212,169,74,0.09), transparent 65%),
+    radial-gradient(900px 500px at 10% 90%, rgba(212,169,74,0.05), transparent 70%),
+    var(--bg);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.22;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  pointer-events: none;
+}
+.hero .container {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(7rem, 12vw, 9rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 1000px) {
+  .hero .container { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+.hero-content .eyebrow { margin-bottom: 1.75rem; }
+.hero-title {
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin-bottom: 2rem;
+}
+.hero-title .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.hero-title .word > span {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: word-rise 1s var(--ease) forwards;
+}
+@keyframes word-rise {
+  to { transform: translateY(0); }
+}
+.hero-sub {
+  font-size: clamp(1rem, 1.35vw, 1.17rem);
+  color: var(--text-2);
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+  line-height: 1.65;
+}
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 560px;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.mitem .mitem-val {
+  font-family: var(--display);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--gold-b);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.mitem .mitem-lbl {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  line-height: 1.4;
+}
+
+/* Hero visual — portrait placeholder */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 460px;
+  justify-self: end;
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .hero-visual { justify-self: center; max-width: 380px; }
+}
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--line-2);
+  overflow: hidden;
+  background: linear-gradient(180deg, #0b0b0b, #131007);
+}
+.hero-frame svg.portrait {
+  width: 100%;
+  height: 100%;
+}
+.hero-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(5,5,5,0.85));
+  pointer-events: none;
+}
+.hero-visual .corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--gold);
+}
+.hero-visual .corner.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.hero-visual .corner.tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.hero-visual .corner.bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.hero-visual .corner.br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.hero-visual .plabel {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  z-index: 3;
+}
+.hero-visual .crosshair {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.hero-visual .crosshair::before,
+.hero-visual .crosshair::after {
+  content: "";
+  position: absolute;
+  background: var(--gold);
+  opacity: 0.35;
+}
+.hero-visual .crosshair::before {
+  top: 50%; left: 0; right: 0;
+  height: 1px;
+}
+.hero-visual .crosshair::after {
+  top: 0; bottom: 0; left: 50%;
+  width: 1px;
+}
+.hero-visual .callout {
+  position: absolute;
+  z-index: 4;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hero-visual .callout.c1 { top: 12%; left: -2rem; }
+.hero-visual .callout.c2 { bottom: 22%; right: -2rem; }
+.hero-visual .callout .line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+@media (max-width: 720px) {
+  .hero-visual .callout { display: none; }
+}
+.hero-visual .badge-live {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  background: rgba(5,5,5,0.7);
+  border: 1px solid var(--line-2);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.hero-visual .badge-live .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: blink 1.6s ease-in-out infinite;
+}
+@keyframes blink { 50% { opacity: 0.3; } }
+
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hero-scroll-cue .line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: pulse-line 2s ease-in-out infinite;
+}
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50%      { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ============ Marquee strip ============ */
+.marquee {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.15rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 3rem;
+  padding-right: 3rem;
+  animation: marquee 32s linear infinite;
+  font-family: var(--display);
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--text-2);
+}
+.marquee-track em { color: var(--gold); font-style: italic; }
+.marquee-track .dot { color: var(--gold); margin: 0 0.4rem; }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============ METHOD — horizontal pillars ============ */
+#method { background: var(--bg); }
+.pillars-viewport {
+  position: relative;
+  margin: 0 calc(-1 * var(--pad));
+  padding: 0 var(--pad);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pillars-viewport::-webkit-scrollbar { display: none; }
+.pillars-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(280px, 34vw, 440px);
+  gap: 1.2rem;
+  padding-bottom: 1rem;
+}
+.pillar {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  scroll-snap-align: start;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+  overflow: hidden;
+}
+.pillar:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
+.pillar-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.35;
+  transition: opacity 0.5s ease;
+}
+.pillar-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.6) brightness(0.55);
+}
+.pillar:hover .pillar-img { opacity: 0.55; }
+.pillar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5,5,5,0.15) 0%, rgba(5,5,5,0.9) 70%, rgba(5,5,5,1));
+  z-index: 1;
+  pointer-events: none;
+}
+.pillar > * { position: relative; z-index: 2; }
+.pillar-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.pillar-body h3 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.8rem;
+}
+.pillar-body p {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 34ch;
+}
+.pillar-foot {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-2);
+  display: flex;
+  justify-content: space-between;
+}
+.pillars-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.pillars-nav-btn {
+  width: 44px; height: 44px;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--text-2);
+  transition: all 0.3s ease;
+}
+.pillars-nav-btn:hover:not([disabled]) {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.pillars-nav-btn[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.pillars-progress {
+  flex: 1;
+  height: 1px;
+  background: var(--line-2);
+  position: relative;
+  overflow: hidden;
+  max-width: 320px;
+}
+.pillars-progress::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s var(--ease);
+}
+.pillars-count {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--text-3);
+}
+
+/* ============ Interstitial ============ */
+.interstitial {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.interstitial-quote {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--text);
+}
+.interstitial-quote em { color: var(--gold-b); }
+.interstitial-attrib {
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ============ FLOW — interactive timeline ============ */
+#flow { background: var(--bg); }
+.flow-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .flow-layout { grid-template-columns: 1fr; }
+}
+.flow-steps {
+  list-style: none;
+  border-left: 1px solid var(--line-2);
+  padding-left: 0;
+  position: relative;
+}
+.flow-step {
+  position: relative;
+  padding: 1.2rem 1.5rem 1.2rem 2.5rem;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  margin-left: -1px;
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+}
+.flow-step:hover { background: rgba(212, 169, 74, 0.04); }
+.flow-step.active {
+  border-left-color: var(--gold);
+  background: rgba(212, 169, 74, 0.06);
+}
+.flow-step-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.flow-step h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.flow-step h4 em { color: var(--gold-b); }
+.flow-step-short {
+  margin-top: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--text-3);
+  line-height: 1.5;
+  max-width: 420px;
+}
+.flow-step.active .flow-step-short { color: var(--text-2); }
+
+.flow-detail {
+  position: sticky;
+  top: 8rem;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 2rem;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.flow-detail-img {
+  aspect-ratio: 16 / 9;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+}
+.flow-detail-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  transition: opacity 0.5s ease, transform 6s var(--ease);
+}
+.flow-detail-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(5,5,5,0.85));
+}
+.flow-detail-img .badge {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  z-index: 2;
+}
+.flow-detail h3 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  letter-spacing: -0.02em;
+}
+.flow-detail h3 em { color: var(--gold-b); }
+.flow-detail p {
+  color: var(--text-2);
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+.flow-detail-check {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.flow-detail-check span {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.flow-detail-check span::before {
+  content: "✓";
+  color: var(--gold);
+  font-family: var(--body);
+  font-size: 0.85rem;
+}
+
+/* ============ ANATOMY ============ */
+#anatomy { background: var(--bg-2); }
+.anatomy-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 900px) { .anatomy-layout { grid-template-columns: 1fr; } }
+.anatomy-copy h2 { margin-bottom: 1.5rem; }
+.anatomy-copy p { color: var(--text-2); margin-bottom: 1.25rem; font-size: 1.02rem; line-height: 1.7; max-width: 52ch; }
+.anatomy-hotspots {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.6rem;
+}
+.anatomy-hot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  background: var(--bg-3);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+.anatomy-hot:hover, .anatomy-hot.active {
+  border-color: var(--gold-dim);
+  background: rgba(212, 169, 74, 0.06);
+}
+.anatomy-hot .tag {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  min-width: 56px;
+}
+.anatomy-hot .ttl {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+.anatomy-hot .note {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.anatomy-stage {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 520px;
+  justify-self: center;
+  width: 100%;
+  background: radial-gradient(ellipse at center, rgba(212,169,74,0.06), transparent 70%);
+}
+.anatomy-stage canvas {
+  width: 100%; height: 100%;
+  display: block;
+}
+.anatomy-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.anatomy-fallback.show { opacity: 1; }
+.anatomy-stage .stage-label {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+
+/* ============ COACH ============ */
+#coach { background: var(--bg); }
+.coach-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+@media (max-width: 900px) { .coach-layout { grid-template-columns: 1fr; } }
+.coach-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--line-2);
+  overflow: hidden;
+  background: linear-gradient(180deg, #0a0a0a, #15100a);
+}
+.coach-photo svg { width: 100%; height: 100%; }
+.coach-photo .corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--gold);
+}
+.coach-photo .corner.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.coach-photo .corner.br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.coach-photo .plabel {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.coach-bio .coach-quote {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.3rem, 2.1vw, 1.75rem);
+  line-height: 1.35;
+  color: var(--gold-b);
+  margin: 2rem 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--gold);
+}
+.coach-bio p {
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.15rem;
+  max-width: 58ch;
+}
+.coach-creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+.coach-creds span {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line-2);
+  border-radius: 2px;
+}
+.coach-qa {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.coach-qa-title {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.coach-qa-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line-2);
+  font-size: 0.88rem;
+  color: var(--text-2);
+  transition: all 0.3s ease;
+}
+.coach-qa-chip:hover {
+  border-color: var(--gold);
+  color: var(--text);
+  background: rgba(212,169,74,0.04);
+}
+.coach-qa-chip .arr { color: var(--gold); }
+
+/* ============ EVIDENCE (results + testimonials + instagram) ============ */
+#evidence { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+@media (max-width: 800px) { .results-grid { grid-template-columns: repeat(2, 1fr); } }
+.result-cell {
+  background: var(--bg);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.result-val {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  color: var(--gold-b);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.result-lbl {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+@media (max-width: 900px) { .testimonials { grid-template-columns: 1fr; } }
+.testimonial {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: border-color 0.3s ease;
+}
+.testimonial:hover { border-color: var(--gold-dim); }
+.testimonial-quote {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  flex: 1;
+}
+.testimonial-quote::before {
+  content: "“";
+  font-family: var(--display);
+  font-size: 2.8rem;
+  color: var(--gold);
+  line-height: 0;
+  vertical-align: -0.3em;
+  margin-right: 0.3rem;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.testimonial-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-weight: 500;
+  color: var(--bg);
+  font-size: 1rem;
+}
+.testimonial-meta {
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-name {
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.testimonial-role {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 0.2rem;
+}
+
+.ig-strip-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.ig-strip-head h3 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  letter-spacing: -0.025em;
+}
+.ig-strip-head h3 em { color: var(--gold-b); }
+.ig-strip-head a {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+.ig-strip-head a:hover { color: var(--gold-b); }
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+@media (max-width: 900px) { .ig-grid { grid-template-columns: repeat(3, 1fr); } }
+.ig-tile {
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-3);
+  cursor: pointer;
+}
+.ig-tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.75) brightness(0.85);
+  transition: all 0.6s var(--ease);
+}
+.ig-tile:hover img { filter: saturate(1) brightness(1); transform: scale(1.05); }
+.ig-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(5,5,5,0.75));
+  pointer-events: none;
+}
+.ig-tile .caption {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0.6rem;
+  right: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s var(--ease);
+  z-index: 2;
+}
+.ig-tile:hover .caption { opacity: 1; transform: none; }
+
+/* ============ PLANS ============ */
+#plans { background: var(--bg); }
+.plans-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+@media (max-width: 800px) { .plans-intro { grid-template-columns: 1fr; } }
+.plans-currency {
+  display: inline-flex;
+  border: 1px solid var(--line-2);
+  border-radius: 2px;
+  overflow: hidden;
+  align-self: start;
+  justify-self: end;
+}
+@media (max-width: 800px) { .plans-currency { justify-self: start; } }
+.plans-currency button {
+  padding: 0.55rem 1rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  color: var(--text-3);
+  transition: all 0.3s ease;
+}
+.plans-currency button.active { background: var(--gold); color: var(--bg); }
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+@media (max-width: 900px) { .plans-grid { grid-template-columns: 1fr; } }
+.plan {
+  position: relative;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.plan:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+.plan.featured {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(212,169,74,0.06), var(--bg-2));
+}
+.plan .badge {
+  position: absolute;
+  top: -10px;
+  left: 1.75rem;
+  background: var(--gold);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border-radius: 2px;
+}
+.plan .pnum {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.plan h3 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  letter-spacing: -0.02em;
+}
+.plan h3 em { color: var(--gold-b); }
+.plan .desc { color: var(--text-2); font-size: 0.94rem; line-height: 1.6; }
+.plan ul {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+.plan ul li {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  display: flex;
+  gap: 0.55rem;
+}
+.plan ul li::before {
+  content: "—";
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.plan .price {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.plan .price .amount {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  letter-spacing: -0.025em;
+  color: var(--text);
+  display: block;
+  line-height: 1;
+}
+.plan .price .per {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* Comparator table */
+.comparator {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  overflow-x: auto;
+}
+.comparator table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 640px;
+}
+.comparator th,
+.comparator td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+.comparator th:last-child,
+.comparator td:last-child { border-right: none; }
+.comparator thead th {
+  background: var(--bg-2);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+.comparator tbody td { color: var(--text-2); }
+.comparator tbody td:first-child {
+  color: var(--text);
+  font-weight: 500;
+  background: var(--bg-2);
+}
+.comparator .yes { color: var(--gold); }
+.comparator .no { color: var(--text-4); }
+
+.plans-note {
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  text-align: center;
+}
+.plans-note strong { color: var(--gold); font-weight: 500; }
+
+/* ============ Perfiles ============ */
+.profiles-block { margin-top: clamp(3rem, 6vw, 5rem); }
+.profiles-head {
+  margin-bottom: 2rem;
+  max-width: 620px;
+}
+.profiles-head p {
+  color: var(--text-2);
+  margin-top: 1rem;
+  line-height: 1.65;
+}
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 900px) { .profiles-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .profiles-grid { grid-template-columns: 1fr; } }
+.profile {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 1.5rem 1.4rem;
+  transition: border-color 0.3s ease;
+}
+.profile:hover { border-color: var(--gold-dim); }
+.profile .pnum {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.profile h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.6rem;
+}
+.profile h4 em { color: var(--gold-b); }
+.profile p {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* ============ FAQ ============ */
+#faq { background: var(--bg-2); border-top: 1px solid var(--line); }
+.faq-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  letter-spacing: -0.015em;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-q .icon {
+  width: 24px; height: 24px;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  transition: transform 0.4s var(--ease), border-color 0.3s ease;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-q .icon {
+  transform: rotate(45deg);
+  border-color: var(--gold);
+}
+.faq-a {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s var(--ease), opacity 0.3s ease, padding 0.4s var(--ease);
+  color: var(--text-2);
+  line-height: 1.7;
+  font-size: 0.98rem;
+  padding: 0 0 0 0;
+}
+.faq-item.open .faq-a {
+  max-height: 400px;
+  opacity: 1;
+  padding: 0 0 1.5rem 0;
+}
+
+/* ============ CONTACT ============ */
+#contact { background: var(--bg); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-left p {
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 46ch;
+}
+.channels { display: grid; gap: 0.75rem; margin-bottom: 2rem; }
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line-2);
+  transition: all 0.3s ease;
+  color: var(--text);
+}
+.channel:hover { border-color: var(--gold); background: rgba(212, 169, 74, 0.04); }
+.channel .icon {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg-3);
+  border: 1px solid var(--line-2);
+  font-family: var(--display);
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+.channel .label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.channel .value { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+
+.contact-form {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 2rem 1.75rem;
+  display: grid;
+  gap: 1.1rem;
+}
+.field { display: grid; gap: 0.45rem; }
+.field label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.field input,
+.field select,
+.field textarea {
+  background: var(--bg);
+  border: 1px solid var(--line-2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus { border-color: var(--gold); }
+.field textarea { resize: vertical; min-height: 100px; }
+
+/* ============ Footer ============ */
+footer {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  padding: clamp(3rem, 6vw, 5rem) 0 2rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+footer .container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+@media (max-width: 900px) { footer .container { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { footer .container { grid-template-columns: 1fr; } }
+footer .brand-block {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+footer .brand-block em {
+  font-style: italic;
+  color: var(--gold);
+  text-transform: lowercase;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+footer .brand-block p {
+  font-family: var(--body);
+  font-size: 0.88rem;
+  color: var(--text-3);
+  margin-top: 1rem;
+  line-height: 1.6;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  max-width: 320px;
+}
+footer h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+footer ul { list-style: none; display: grid; gap: 0.5rem; }
+footer ul a {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  transition: color 0.25s ease;
+}
+footer ul a:hover { color: var(--gold); }
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ============ Responsive niceties ============ */
+@media (max-width: 640px) {
+  .hero-meta { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+  .mitem .mitem-val { font-size: 1.6rem; }
+  .hero-ctas { gap: 0.6rem; }
+  .btn { padding: 0.9rem 1.3rem; font-size: 0.68rem; }
+  .flow-detail { position: static; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-title .word > span { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="plogo">LYKOS<em>method</em></div>
+  <div class="pbar"></div>
+  <div class="pcount" id="pcount">Loading · 00</div>
+</div>
+
+<!-- Grain overlay -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Side dot nav -->
+<aside class="dot-nav" id="dotNav" aria-label="Navegación de secciones">
+  <a href="#top" data-label="Inicio" class="active"></a>
+  <a href="#method" data-label="Método"></a>
+  <a href="#flow" data-label="Proceso"></a>
+  <a href="#anatomy" data-label="Anatomía"></a>
+  <a href="#coach" data-label="Enzo"></a>
+  <a href="#evidence" data-label="Alumnos"></a>
+  <a href="#plans" data-label="Planes"></a>
+  <a href="#faq" data-label="FAQ"></a>
+  <a href="#contact" data-label="Contacto"></a>
+</aside>
+
+<!-- Top nav -->
+<nav class="top" id="topnav">
+  <div class="container">
+    <a href="#top" class="brand">
+      LYKOS<em>method</em>
+      <span class="brand-tag" data-i18n="nav.tag">v2 · Enzo Nievas</span>
+    </a>
+    <ul>
+      <li><a href="#method" data-i18n="nav.method">Método</a></li>
+      <li><a href="#flow" data-i18n="nav.flow">Proceso</a></li>
+      <li><a href="#anatomy" data-i18n="nav.anatomy">Anatomía</a></li>
+      <li><a href="#coach" data-i18n="nav.coach">Entrenador</a></li>
+      <li><a href="#evidence" data-i18n="nav.evidence">Alumnos</a></li>
+      <li><a href="#plans" data-i18n="nav.plans">Planes</a></li>
+    </ul>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-setlang="es" class="active">ES</button>
+        <button data-setlang="en">EN</button>
+      </div>
+      <a href="#contact" class="btn-ghost magnetic" data-magnetic data-i18n="nav.cta">Empezar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow" data-i18n="hero.eyebrow">Lykos Method / Mendoza, Argentina</span>
+      <h1 class="hero-title" id="heroTitle">
+        <span class="word"><span style="animation-delay:.3s">Entrená</span></span>
+        <span class="word"><span style="animation-delay:.36s">con</span></span>
+        <span class="word"><span style="animation-delay:.42s">un</span></span>
+        <span class="word"><span style="animation-delay:.48s">método</span></span>
+        <span class="word"><span style="animation-delay:.54s">que</span></span>
+        <br/>
+        <span class="word"><span style="animation-delay:.6s"><em>respeta</em></span></span>
+        <span class="word"><span style="animation-delay:.66s"><em>tu</em></span></span>
+        <span class="word"><span style="animation-delay:.72s"><em>cuerpo.</em></span></span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub">Un sistema de entrenamiento basado en la biomecánica, la fuerza inteligente y el movimiento eficiente. Diagnóstico, planificación y seguimiento personalizados — desde Mendoza al mundo.</p>
+      <div class="hero-ctas">
+        <a href="#plans" class="btn btn-primary magnetic" data-magnetic>
+          <span data-i18n="hero.cta1">Ver planes</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20quer%C3%ADa%20saber%20m%C3%A1s%20del%20m%C3%A9todo" target="_blank" rel="noopener" class="btn btn-outline magnetic" data-magnetic>
+          <span data-i18n="hero.cta2">Escribir por WhatsApp</span>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="mitem">
+          <div class="mitem-val" data-count="3">03</div>
+          <div class="mitem-lbl" data-i18n="hero.meta1">Intensidades — alta, media, baja</div>
+        </div>
+        <div class="mitem">
+          <div class="mitem-val">∞</div>
+          <div class="mitem-lbl" data-i18n="hero.meta2">Desde cualquier país, tu huso horario</div>
+        </div>
+        <div class="mitem">
+          <div class="mitem-val" data-count="01">01</div>
+          <div class="mitem-lbl" data-i18n="hero.meta3">Regla — salud siempre primero</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-frame">
+        <svg class="portrait" viewBox="0 0 900 1125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-label="Enzo Nievas · retrato pendiente">
+          <defs>
+            <linearGradient id="pBg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#090909"/>
+              <stop offset="0.4" stop-color="#181209"/>
+              <stop offset="1" stop-color="#060606"/>
+            </linearGradient>
+            <radialGradient id="pGlow" cx="0.5" cy="0.38" r="0.55">
+              <stop offset="0" stop-color="#d4a94a" stop-opacity="0.22"/>
+              <stop offset="1" stop-color="#d4a94a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="1125" fill="url(#pBg)"/>
+          <rect width="900" height="1125" fill="url(#pGlow)"/>
+          <!-- Abstract figure silhouette -->
+          <g transform="translate(450, 500)" stroke="#d4a94a" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="0" cy="-110" r="120" stroke-width="1.8" opacity="0.85"/>
+            <path d="M -50 -10 Q 0 25, 50 -10" opacity="0.6"/>
+            <path d="M 0 40 Q -42 55, -200 100 Q -255 140, -270 320"/>
+            <path d="M 0 40 Q 42 55, 200 100 Q 255 140, 270 320"/>
+            <path d="M -60 40 Q -40 180, -60 380" opacity="0.45"/>
+            <path d="M  60 40 Q  40 180,  60 380" opacity="0.45"/>
+          </g>
+          <text x="450" y="820" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="130" font-weight="300" fill="#d4a94a" opacity="0.14">Enzo</text>
+          <text x="450" y="1050" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" letter-spacing="5" fill="#5a5a5a">RETRATO REAL PENDIENTE</text>
+        </svg>
+      </div>
+      <div class="crosshair" aria-hidden="true"></div>
+      <span class="corner tl"></span>
+      <span class="corner tr"></span>
+      <span class="corner bl"></span>
+      <span class="corner br"></span>
+      <span class="plabel" data-i18n="hero.plabel">placeholder · retrato real pendiente</span>
+      <span class="badge-live"><span class="dot"></span><span data-i18n="hero.live">alumnos activos · ES/EN</span></span>
+      <span class="callout c1">
+        <span class="line"></span>
+        <span data-i18n="hero.cal1">Biomecánica aplicada</span>
+      </span>
+      <span class="callout c2">
+        <span data-i18n="hero.cal2">Fuerza inteligente</span>
+        <span class="line"></span>
+      </span>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue" aria-hidden="true">
+    <span data-i18n="hero.scroll">Scroll</span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- Marquee strip -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span><em>Biomecánica</em><span class="dot">·</span>movimiento eficiente<span class="dot">·</span><em>fuerza inteligente</em><span class="dot">·</span>salud primero<span class="dot">·</span><em>anamnesis</em><span class="dot">·</span>seguimiento quincenal<span class="dot">·</span><em>balance mensual</em><span class="dot">·</span>videollamada de ajuste<span class="dot">·</span></span>
+    <span><em>Biomecánica</em><span class="dot">·</span>movimiento eficiente<span class="dot">·</span><em>fuerza inteligente</em><span class="dot">·</span>salud primero<span class="dot">·</span><em>anamnesis</em><span class="dot">·</span>seguimiento quincenal<span class="dot">·</span><em>balance mensual</em><span class="dot">·</span>videollamada de ajuste<span class="dot">·</span></span>
+  </div>
+</div>
+
+<!-- ================= METHOD — horizontal pillars ================= -->
+<section id="method">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">01</span>
+      <span class="eyebrow" data-i18n="method.eyebrow">El método · cinco pilares</span>
+    </div>
+    <div class="section-title reveal">
+      <h2 data-i18n-html="method.title">Cinco pilares, <em>un método.</em></h2>
+      <p data-i18n="method.intro">Un sistema de entrenamiento basado en la biomecánica, la fuerza inteligente y el movimiento eficiente. Cada pilar es una decisión de diseño que atraviesa todas las planificaciones. Deslizá para recorrerlos.</p>
+    </div>
+
+    <div class="pillars-viewport" id="pillarsViewport">
+      <div class="pillars-track">
+        <article class="pillar reveal">
+          <div class="pillar-img"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=75" alt="" loading="lazy"/></div>
+          <span class="pillar-num">Pilar 01</span>
+          <div class="pillar-body">
+            <h3 data-i18n-html="method.c1.title">Movimiento <em>eficiente</em></h3>
+            <p data-i18n="method.c1.desc">Cada ejercicio tiene un patrón correcto. Lo encontramos, lo practicamos y lo integramos a tu cuerpo antes de subir la carga.</p>
+          </div>
+          <div class="pillar-foot">
+            <span data-i18n="method.c1.tag">Base técnica</span>
+            <span>→</span>
+          </div>
+        </article>
+
+        <article class="pillar reveal d1">
+          <div class="pillar-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=75" alt="" loading="lazy"/></div>
+          <span class="pillar-num">Pilar 02</span>
+          <div class="pillar-body">
+            <h3 data-i18n-html="method.c2.title">Fuerza <em>inteligente</em></h3>
+            <p data-i18n="method.c2.desc">No se trata de levantar más — se trata de levantar mejor. Carga progresiva con propósito, control y recuperación planificada.</p>
+          </div>
+          <div class="pillar-foot">
+            <span data-i18n="method.c2.tag">Progresión</span>
+            <span>→</span>
+          </div>
+        </article>
+
+        <article class="pillar reveal d2">
+          <div class="pillar-img"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=75" alt="" loading="lazy"/></div>
+          <span class="pillar-num">Pilar 03</span>
+          <div class="pillar-body">
+            <h3 data-i18n-html="method.c3.title">Biomecánica <em>aplicada</em></h3>
+            <p data-i18n="method.c3.desc">Entender cómo se mueve tu cuerpo — palancas, rangos, tensiones — para entrenarlo como necesita, no como dice internet.</p>
+          </div>
+          <div class="pillar-foot">
+            <span data-i18n="method.c3.tag">Eje del método</span>
+            <span>→</span>
+          </div>
+        </article>
+
+        <article class="pillar reveal d3">
+          <div class="pillar-img"><img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=800&q=75" alt="" loading="lazy"/></div>
+          <span class="pillar-num">Pilar 04</span>
+          <div class="pillar-body">
+            <h3 data-i18n-html="method.c4.title">Adaptación <em>progresiva</em></h3>
+            <p data-i18n="method.c4.desc">El plan se ajusta a tu evolución. Lo que funciona hoy se recalibra mañana según lo que el cuerpo devuelve en cada ciclo.</p>
+          </div>
+          <div class="pillar-foot">
+            <span data-i18n="method.c4.tag">Ciclo dinámico</span>
+            <span>→</span>
+          </div>
+        </article>
+
+        <article class="pillar reveal d4">
+          <div class="pillar-img"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=75" alt="" loading="lazy"/></div>
+          <span class="pillar-num">Pilar 05</span>
+          <div class="pillar-body">
+            <h3 data-i18n-html="method.c5.title">Conexión <em>cuerpo-mente</em></h3>
+            <p data-i18n="method.c5.desc">Entrenar con conciencia. Sentir el músculo, controlar el movimiento, construir desde adentro. La técnica empieza en la cabeza.</p>
+          </div>
+          <div class="pillar-foot">
+            <span data-i18n="method.c5.tag">Sello Lykos</span>
+            <span>→</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="pillars-nav reveal">
+      <button class="pillars-nav-btn" id="pillarsPrev" aria-label="Pilar anterior">←</button>
+      <button class="pillars-nav-btn" id="pillarsNext" aria-label="Pilar siguiente">→</button>
+      <div class="pillars-progress" id="pillarsProgress"></div>
+      <span class="pillars-count" id="pillarsCount">01 / 05</span>
+    </div>
+  </div>
+</section>
+
+<!-- Interstitial -->
+<div class="interstitial reveal">
+  <div class="container">
+    <p class="interstitial-quote" data-i18n-html="inter.quote"><em>Fuerza con inteligencia,</em> movimiento con propósito.</p>
+    <span class="interstitial-attrib" data-i18n="inter.attrib">— Enzo Nievas · Lykos Method</span>
+  </div>
+</div>
+
+<!-- ================= FLOW — interactive timeline ================= -->
+<section id="flow">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">02</span>
+      <span class="eyebrow" data-i18n="flow.eyebrow">Cómo trabajamos</span>
+    </div>
+    <div class="section-title reveal">
+      <h2 data-i18n-html="flow.title">Del diagnóstico al balance, <em>en cinco pasos.</em></h2>
+      <p data-i18n="flow.intro">Cada alumno recorre el mismo proceso. Cliqueá cada paso para ver qué incluye y qué entregables salen de él.</p>
+    </div>
+
+    <div class="flow-layout">
+      <ul class="flow-steps" id="flowSteps">
+        <li class="flow-step active reveal" data-flow="0">
+          <span class="flow-step-num">Paso 01 · Semana 0</span>
+          <h4 data-i18n-html="flow.s1.title">Anamnesis <em>inicial</em></h4>
+          <p class="flow-step-short" data-i18n="flow.s1.short">Diagnóstico completo: historia clínica, lesiones, objetivos, disponibilidad.</p>
+        </li>
+        <li class="flow-step reveal d1" data-flow="1">
+          <span class="flow-step-num">Paso 02 · Semana 1</span>
+          <h4 data-i18n-html="flow.s2.title">Planificación <em>personalizada</em></h4>
+          <p class="flow-step-short" data-i18n="flow.s2.short">Tu rutina armada desde la biblioteca propia de Enzo, con videos de ejecución.</p>
+        </li>
+        <li class="flow-step reveal d2" data-flow="2">
+          <span class="flow-step-num">Paso 03 · Permanente</span>
+          <h4 data-i18n-html="flow.s3.title">Entrenamiento <em>con feedback</em></h4>
+          <p class="flow-step-short" data-i18n="flow.s3.short">Entrenás desde la plataforma. Comentarios diarios y videos para corrección técnica.</p>
+        </li>
+        <li class="flow-step reveal d3" data-flow="3">
+          <span class="flow-step-num">Paso 04 · Cada 2 semanas</span>
+          <h4 data-i18n-html="flow.s4.title">Seguimiento <em>quincenal</em></h4>
+          <p class="flow-step-short" data-i18n="flow.s4.short">Revisión de progreso con videollamada si hace falta despejar dudas.</p>
+        </li>
+        <li class="flow-step reveal d4" data-flow="4">
+          <span class="flow-step-num">Paso 05 · Fin de mes</span>
+          <h4 data-i18n-html="flow.s5.title">Balance <em>mensual</em></h4>
+          <p class="flow-step-short" data-i18n="flow.s5.short">Fotos de progreso, medición y rearmado del plan para el ciclo siguiente.</p>
+        </li>
+      </ul>
+
+      <div class="flow-detail reveal d2" id="flowDetail">
+        <div class="flow-detail-img">
+          <img id="flowImg" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=75" alt="" loading="lazy"/>
+          <span class="badge" id="flowBadge">Paso 01 · Anamnesis</span>
+        </div>
+        <h3 id="flowTitle" data-i18n-html="flow.d1.title">Anamnesis <em>inicial</em></h3>
+        <p id="flowDesc" data-i18n="flow.d1.desc">Diagnóstico de entrada: historia clínica, patologías, lesiones previas, características físicas y objetivos. Sin esto, cualquier rutina es adivinanza. Dura entre 45 y 90 minutos, online o presencial en Mendoza.</p>
+        <div class="flow-detail-check" id="flowChecks">
+          <span data-i18n="flow.d1.c1">Historia clínica</span>
+          <span data-i18n="flow.d1.c2">Test de movilidad</span>
+          <span data-i18n="flow.d1.c3">Objetivos medibles</span>
+          <span data-i18n="flow.d1.c4">Disponibilidad semanal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ANATOMY ================= -->
+<section id="anatomy">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">03</span>
+      <span class="eyebrow" data-i18n="anatomy.eyebrow">Anatomía · el eje</span>
+    </div>
+
+    <div class="anatomy-layout">
+      <div class="anatomy-copy reveal">
+        <h2 data-i18n-html="anatomy.title">La columna <em>no es una parte.</em> Es el eje.</h2>
+        <p data-i18n="anatomy.desc">Cada decisión de entrenamiento pasa por la columna — literal y figurativamente. Si el eje cede, todo lo demás se rompe con el tiempo. Por eso está en el centro del método Lykos.</p>
+        <p data-i18n="anatomy.desc2">Cliqueá cada región para ver cómo trabajamos esa zona en el método.</p>
+
+        <div class="anatomy-hotspots" id="anatomyHotspots">
+          <button class="anatomy-hot active" data-hot="cervical" data-y="2.35">
+            <span class="tag">C1–C7</span>
+            <span class="ttl" data-i18n="anatomy.h1">Cervical</span>
+            <span class="note" data-i18n="anatomy.h1n">postura · cabeza</span>
+          </button>
+          <button class="anatomy-hot" data-hot="toracica" data-y="0.85">
+            <span class="tag">T1–T12</span>
+            <span class="ttl" data-i18n="anatomy.h2">Torácica</span>
+            <span class="note" data-i18n="anatomy.h2n">movilidad · respiración</span>
+          </button>
+          <button class="anatomy-hot" data-hot="lumbar" data-y="-0.8">
+            <span class="tag">L1–L5</span>
+            <span class="ttl" data-i18n="anatomy.h3">Lumbar</span>
+            <span class="note" data-i18n="anatomy.h3n">fuerza · estabilidad</span>
+          </button>
+          <button class="anatomy-hot" data-hot="sacro" data-y="-2.6">
+            <span class="tag">S1–S5</span>
+            <span class="ttl" data-i18n="anatomy.h4">Sacro</span>
+            <span class="note" data-i18n="anatomy.h4n">cadera · transferencia</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="anatomy-stage">
+        <canvas id="spineCanvas" aria-label="Columna vertebral 3D"></canvas>
+        <div class="anatomy-fallback" id="spineFallback" aria-hidden="true">
+          <svg viewBox="0 0 240 780" xmlns="http://www.w3.org/2000/svg" style="height:70%;">
+            <defs>
+              <linearGradient id="spineFallbackGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#eaeaea" stop-opacity="0.85"/>
+                <stop offset="50%" stop-color="#f2c15e"/>
+                <stop offset="100%" stop-color="#a88538" stop-opacity="0.9"/>
+              </linearGradient>
+            </defs>
+            <g transform="translate(120,55)">
+              <circle r="38" fill="none" stroke="url(#spineFallbackGrad)" stroke-width="1.5"/>
+            </g>
+            <path d="M 120 95 C 130 220 110 340 125 470 C 138 590 115 680 120 730" stroke="url(#spineFallbackGrad)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="stage-label">
+          <span data-i18n="anatomy.label1">Lykos Spine</span> · <span data-i18n="anatomy.label2">estudio interactivo</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COACH ================= -->
+<section id="coach">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">04</span>
+      <span class="eyebrow" data-i18n="coach.eyebrow">El entrenador</span>
+    </div>
+
+    <div class="section-title reveal">
+      <h2 data-i18n-html="coach.title">Enzo <em>Nievas.</em></h2>
+    </div>
+
+    <div class="coach-layout">
+      <div class="coach-photo reveal">
+        <svg viewBox="0 0 900 1125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-label="Retrato placeholder de Enzo Nievas">
+          <defs>
+            <linearGradient id="coachBg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#080808"/>
+              <stop offset="0.4" stop-color="#14100a"/>
+              <stop offset="1" stop-color="#080808"/>
+            </linearGradient>
+            <radialGradient id="coachGlow" cx="0.5" cy="0.42" r="0.55">
+              <stop offset="0" stop-color="#d4a94a" stop-opacity="0.16"/>
+              <stop offset="1" stop-color="#d4a94a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="1125" fill="url(#coachBg)"/>
+          <rect width="900" height="1125" fill="url(#coachGlow)"/>
+          <g transform="translate(450, 520)" stroke="#d4a94a" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="0" cy="-80" r="115" stroke-width="1.8"/>
+            <path d="M -45 -5 Q 0 30, 45 -5" opacity="0.55"/>
+            <path d="M 0 45 Q -38 58, -190 95 Q -240 135, -255 300"/>
+            <path d="M 0 45 Q 38 58, 190 95 Q 240 135, 255 300"/>
+          </g>
+          <text x="450" y="820" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="130" font-weight="300" fill="#d4a94a" opacity="0.18">Enzo</text>
+          <text x="450" y="1050" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="5" fill="#5a5a5a">RETRATO REAL PENDIENTE</text>
+        </svg>
+        <span class="corner tl"></span>
+        <span class="corner br"></span>
+        <span class="plabel" data-i18n="coach.plabel">placeholder · retrato real pendiente</span>
+      </div>
+
+      <div class="coach-bio reveal d1">
+        <p data-i18n="coach.bio1">Profesor de Educación Física especializado en entrenamiento de fuerza y biomecánica aplicada, con experiencia en el trabajo personalizado en gimnasio y en la readaptación de personas con molestias o lesiones.</p>
+        <p data-i18n="coach.bio2">A lo largo de su formación desarrolló un enfoque basado en el movimiento eficiente, la técnica correcta y la progresión inteligente — integrando herramientas de entrenamiento, prevención y control corporal.</p>
+
+        <blockquote class="coach-quote" data-i18n="coach.quote">"Mi trabajo no es llevarte al límite. Es llevarte a tu potencial, sin romperte en el camino."</blockquote>
+
+        <div class="coach-creds">
+          <span data-i18n="coach.cred1">Profesor de EF</span>
+          <span data-i18n="coach.cred2">Especialización en salud</span>
+          <span data-i18n="coach.cred3">Mendoza, AR</span>
+          <span data-i18n="coach.cred4">Alumnos online</span>
+          <span data-i18n="coach.cred5">ES / EN</span>
+        </div>
+
+        <div class="coach-qa">
+          <div class="coach-qa-title" data-i18n="coach.qatitle">Preguntale a Enzo directo por WhatsApp</div>
+          <a class="coach-qa-chip" href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20tengo%20una%20lesi%C3%B3n%20%E2%80%94%20%C2%BFme%20pod%C3%A9s%20armar%20un%20plan%20igual%3F" target="_blank" rel="noopener">
+            <span class="arr">→</span>
+            <span data-i18n="coach.q1">¿Puedo entrenar con una lesión?</span>
+          </a>
+          <a class="coach-qa-chip" href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20nunca%20entren%C3%A9%20en%20serio%20%E2%80%94%20%C2%BFpor%20d%C3%B3nde%20empiezo%3F" target="_blank" rel="noopener">
+            <span class="arr">→</span>
+            <span data-i18n="coach.q2">Nunca entrené en serio, ¿por dónde empiezo?</span>
+          </a>
+          <a class="coach-qa-chip" href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20entreno%20desde%20afuera%20de%20Argentina%20%E2%80%94%20%C2%BFc%C3%B3mo%20funcionan%20los%20pagos%3F" target="_blank" rel="noopener">
+            <span class="arr">→</span>
+            <span data-i18n="coach.q3">Entreno desde el exterior — ¿cómo pago?</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVIDENCE — results + testimonials + instagram ================= -->
+<section id="evidence">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">05</span>
+      <span class="eyebrow" data-i18n="evidence.eyebrow">Evidencia · alumnos</span>
+    </div>
+    <div class="section-title reveal">
+      <h2 data-i18n-html="evidence.title">Resultados que el cuerpo <em>confirma.</em></h2>
+      <p data-i18n="evidence.intro">Lo que cambia en un alumno después de aplicar el método durante un ciclo completo. Medimos movilidad, fuerza máxima, dolores recurrentes y adherencia.</p>
+    </div>
+
+    <div class="results-grid reveal">
+      <div class="result-cell">
+        <div class="result-val" data-count="120">120+</div>
+        <div class="result-lbl" data-i18n="evidence.r1">Alumnos online formados</div>
+      </div>
+      <div class="result-cell">
+        <div class="result-val" data-count="8">08</div>
+        <div class="result-lbl" data-i18n="evidence.r2">Años perfeccionando el método</div>
+      </div>
+      <div class="result-cell">
+        <div class="result-val" data-count="93">93%</div>
+        <div class="result-lbl" data-i18n="evidence.r3">Adherencia a los 90 días</div>
+      </div>
+      <div class="result-cell">
+        <div class="result-val" data-count="0">00</div>
+        <div class="result-lbl" data-i18n="evidence.r4">Lesiones atribuibles al plan</div>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <article class="testimonial reveal">
+        <p class="testimonial-quote" data-i18n="evidence.t1.q">Arranqué con miedo por una hernia lumbar. A los dos meses volví a hacer sentadillas sin dolor. Nunca me sentí apurado — el plan respetó mis tiempos reales.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name" data-i18n="evidence.t1.n">Martín G.</span>
+            <span class="testimonial-role" data-i18n="evidence.t1.r">Plan 02 · Mendoza · 6 meses</span>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial reveal d1">
+        <p class="testimonial-quote" data-i18n="evidence.t2.q">Entreno desde Madrid. El feedback diario y las correcciones por video me hicieron sentir que tenía un entrenador al lado, no un PDF en el mail.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name" data-i18n="evidence.t2.n">Sofía R.</span>
+            <span class="testimonial-role" data-i18n="evidence.t2.r">Plan 02 · España · 4 meses</span>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial reveal d2">
+        <p class="testimonial-quote" data-i18n="evidence.t3.q">Tengo 62 años y pensé que ya era tarde. Enzo me armó un plan que respeta lo que mi cuerpo puede hoy. Subo escaleras sin agitarme por primera vez en años.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">L</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name" data-i18n="evidence.t3.n">Liliana M.</span>
+            <span class="testimonial-role" data-i18n="evidence.t3.r">Plan 03 · Godoy Cruz · 1 año</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="ig-strip">
+      <div class="ig-strip-head reveal">
+        <h3 data-i18n-html="evidence.igtitle">Fragmentos del método <em>en Instagram</em></h3>
+        <a href="https://instagram.com/lykosmethod" target="_blank" rel="noopener" data-i18n="evidence.igcta">@lykosmethod →</a>
+      </div>
+      <div class="ig-grid reveal d1">
+        <a class="ig-tile" href="https://instagram.com/lykosmethod" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=70" alt="" loading="lazy"/>
+          <span class="caption" data-i18n="evidence.ig1">Técnica de sentadilla</span>
+        </a>
+        <a class="ig-tile" href="https://instagram.com/lykosmethod" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=500&q=70" alt="" loading="lazy"/>
+          <span class="caption" data-i18n="evidence.ig2">Corrección de peso muerto</span>
+        </a>
+        <a class="ig-tile" href="https://instagram.com/lykosmethod" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=500&q=70" alt="" loading="lazy"/>
+          <span class="caption" data-i18n="evidence.ig3">Movilidad de cadera</span>
+        </a>
+        <a class="ig-tile" href="https://instagram.com/lykosmethod" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1540474527619-cf5e6f54d42c?w=500&q=70" alt="" loading="lazy"/>
+          <span class="caption" data-i18n="evidence.ig4">Progreso alumna</span>
+        </a>
+        <a class="ig-tile" href="https://instagram.com/lykosmethod" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=500&q=70" alt="" loading="lazy"/>
+          <span class="caption" data-i18n="evidence.ig5">Rehabilitación lumbar</span>
+        </a>
+        <a class="ig-tile" href="https://instagram.com/lykosmethod" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=500&q=70" alt="" loading="lazy"/>
+          <span class="caption" data-i18n="evidence.ig6">Adultos mayores</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLANS ================= -->
+<section id="plans">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">06</span>
+      <span class="eyebrow" data-i18n="plans.eyebrow">Planes · tres modalidades</span>
+    </div>
+
+    <div class="plans-intro">
+      <div class="section-title reveal" style="margin-bottom:0;">
+        <h2 data-i18n-html="plans.title">Elegí el nivel de <em>acompañamiento.</em></h2>
+        <p data-i18n="plans.intro">De rutina única a plan integral con red de profesionales. El mismo método, tres niveles de inmersión. Pagos en ARS vía Mercado Pago · internacionales en USD.</p>
+      </div>
+      <div class="plans-currency reveal d1" id="plansCurrency" role="group" aria-label="Moneda">
+        <button data-ccy="ARS" class="active">ARS</button>
+        <button data-ccy="USD">USD</button>
+      </div>
+    </div>
+
+    <div class="plans-grid">
+      <article class="plan reveal" data-plan="1">
+        <span class="pnum">Plan 01</span>
+        <h3 data-i18n-html="plans.p1.title">Rutina <em>personalizada</em></h3>
+        <p class="desc" data-i18n="plans.p1.desc">Una planificación diseñada a partir de tu objetivo, con indicaciones técnicas y videos de cada ejercicio. Entrenás a tu ritmo, sin seguimiento posterior.</p>
+        <ul>
+          <li data-i18n="plans.p1.f1">Anamnesis inicial</li>
+          <li data-i18n="plans.p1.f2">Planificación única a medida</li>
+          <li data-i18n="plans.p1.f3">Videos de ejecución de Enzo</li>
+          <li data-i18n="plans.p1.f4">Indicaciones técnicas escritas</li>
+          <li data-i18n="plans.p1.f5">Acceso a biblioteca de ejercicios</li>
+        </ul>
+        <div class="price">
+          <span class="amount" data-price-ars="$55.000" data-price-usd="USD 50">$55.000</span>
+          <span class="per" data-i18n="plans.p1.per">Pago único</span>
+        </div>
+        <a href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20me%20interesa%20el%20Plan%2001%20%E2%80%94%20Rutina%20personalizada" target="_blank" rel="noopener" class="btn magnetic" data-magnetic>
+          <span data-i18n="plans.cta">Empezar</span>
+          <span class="arrow">→</span>
+        </a>
+      </article>
+
+      <article class="plan featured reveal d1" data-plan="2">
+        <span class="badge" data-i18n="plans.p2.badge">Más elegido</span>
+        <span class="pnum">Plan 02</span>
+        <h3 data-i18n-html="plans.p2.title">Planificación <em>mensual</em></h3>
+        <p class="desc" data-i18n="plans.p2.desc">La rutina personalizada más el seguimiento que la mantiene viva. Medición de progreso cada dos semanas, con videollamada si hace falta ajustar carga.</p>
+        <ul>
+          <li data-i18n="plans.p2.f1">Todo lo del Plan 01</li>
+          <li data-i18n="plans.p2.f2">Feedback diario en plataforma</li>
+          <li data-i18n="plans.p2.f3">Upload de tus videos para corrección</li>
+          <li data-i18n="plans.p2.f4">Seguimiento quincenal</li>
+          <li data-i18n="plans.p2.f5">Videollamada de ajuste</li>
+          <li data-i18n="plans.p2.f6">Balance mensual con fotos</li>
+        </ul>
+        <div class="price">
+          <span class="amount" data-price-ars="$120.000" data-price-usd="USD 110">$120.000</span>
+          <span class="per" data-i18n="plans.p2.per">Por mes</span>
+        </div>
+        <a href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20me%20interesa%20el%20Plan%2002%20%E2%80%94%20Planificaci%C3%B3n%20mensual" target="_blank" rel="noopener" class="btn btn-primary magnetic" data-magnetic>
+          <span data-i18n="plans.cta">Empezar</span>
+          <span class="arrow">→</span>
+        </a>
+      </article>
+
+      <article class="plan reveal d2" data-plan="3">
+        <span class="pnum">Plan 03</span>
+        <h3 data-i18n-html="plans.p3.title">Plan <em>integral</em></h3>
+        <p class="desc" data-i18n="plans.p3.desc">Todo lo del Plan 02 más la participación activa de otros profesionales de la salud — nutricionista y kinesiólogo coordinados.</p>
+        <ul>
+          <li data-i18n="plans.p3.f1">Todo lo del Plan 02</li>
+          <li data-i18n="plans.p3.f2">Nutricionista asociada</li>
+          <li data-i18n="plans.p3.f3">Kinesiólogo asociado</li>
+          <li data-i18n="plans.p3.f4">Coordinación interdisciplinaria</li>
+          <li data-i18n="plans.p3.f5">Prioridad de agenda</li>
+        </ul>
+        <div class="price">
+          <span class="amount" data-price-ars="$200.000" data-price-usd="USD 190">$200.000</span>
+          <span class="per" data-i18n="plans.p3.per">Por mes</span>
+        </div>
+        <a href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20me%20interesa%20el%20Plan%2003%20%E2%80%94%20Plan%20integral" target="_blank" rel="noopener" class="btn magnetic" data-magnetic>
+          <span data-i18n="plans.cta">Empezar</span>
+          <span class="arrow">→</span>
+        </a>
+      </article>
+    </div>
+
+    <!-- Comparator -->
+    <div class="comparator reveal">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="comp.head">Incluye</th>
+            <th>Plan 01</th>
+            <th>Plan 02</th>
+            <th>Plan 03</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-i18n="comp.r1">Anamnesis inicial</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r2">Planificación a medida</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r3">Videos de ejecución</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r4">Feedback diario</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r5">Corrección por video</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r6">Seguimiento quincenal</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r7">Balance mensual con fotos</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r8">Nutricionista asociada</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r9">Kinesiólogo asociado</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><td data-i18n="comp.r10">Prioridad de agenda</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="plans-note" data-i18n-html="plans.note">Pagos en ARS vía <strong>Mercado Pago</strong> · Internacionales en <strong>USD</strong> (transferencia, wallet cripto o Wise).</p>
+
+    <!-- Perfiles -->
+    <div class="profiles-block">
+      <div class="profiles-head reveal">
+        <span class="eyebrow" data-i18n="profiles.eyebrow">Perfiles que acompaño</span>
+        <p data-i18n="profiles.intro">Cada plan se adapta al perfil del alumno — desde principiantes hasta alto rendimiento, pasando por rehabilitación y adultos mayores. Todo bajo la misma filosofía: cuidado del cuerpo primero.</p>
+      </div>
+
+      <div class="profiles-grid">
+        <article class="profile reveal d1">
+          <span class="pnum">01</span>
+          <h4 data-i18n-html="profiles.p1.title">Alto <em>rendimiento</em></h4>
+          <p data-i18n="profiles.p1.desc">Ciclos de carga, tapering y recuperación activa para competidores. Rendimiento con el cuidado del cuerpo como techo, no como opción.</p>
+        </article>
+        <article class="profile reveal d2">
+          <span class="pnum">02</span>
+          <h4 data-i18n-html="profiles.p2.title">Rehabilitación <em>de lesiones</em></h4>
+          <p data-i18n="profiles.p2.desc">Vuelta progresiva tras una lesión, respetando los tiempos reales de recuperación. Coordinación con kinesiólogo si hace falta.</p>
+        </article>
+        <article class="profile reveal d3">
+          <span class="pnum">03</span>
+          <h4 data-i18n-html="profiles.p3.title">Reeducación <em>muscular</em></h4>
+          <p data-i18n="profiles.p3.desc">Reactivar cadenas y patrones que dejaron de funcionar. Para post-operatorios o para quien necesita reaprender a moverse.</p>
+        </article>
+        <article class="profile reveal d1">
+          <span class="pnum">04</span>
+          <h4 data-i18n-html="profiles.p4.title">Adultos <em>mayores</em></h4>
+          <p data-i18n="profiles.p4.desc">Fuerza, movilidad y autonomía. Prevención de caídas y trabajo articular adaptado. La edad guía la carga, nunca la limita.</p>
+        </article>
+        <article class="profile reveal d2">
+          <span class="pnum">05</span>
+          <h4 data-i18n-html="profiles.p5.title">Principiantes <em>absolutos</em></h4>
+          <p data-i18n="profiles.p5.desc">Primera vez entrenando en serio. Construcción gradual del hábito y técnica desde el primer día. Sin romperte antes de empezar.</p>
+        </article>
+        <article class="profile reveal d3">
+          <span class="pnum">06</span>
+          <h4 data-i18n-html="profiles.p6.title">Salud <em>y bienestar</em></h4>
+          <p data-i18n="profiles.p6.desc">Actividad física como medicina preventiva. Menos dolores, mejor sueño, más energía. Entrenar para vivir mejor, no para una foto.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">07</span>
+      <span class="eyebrow" data-i18n="faq.eyebrow">Preguntas frecuentes</span>
+    </div>
+    <div class="section-title reveal" style="margin-bottom:2.5rem;">
+      <h2 data-i18n-html="faq.title">Lo que solés <em>preguntar primero.</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          <span data-i18n="faq.q1">¿Tengo que ser ya deportista para empezar?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p data-i18n="faq.a1">No. El método se construye desde donde estás hoy. La anamnesis inicial calibra el punto de partida real — principiante absoluto, persona con lesión, adulto mayor, alto rendimiento — y el plan se ajusta desde ahí.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal d1">
+        <button class="faq-q" aria-expanded="false">
+          <span data-i18n="faq.q2">¿Cuánto tiempo dedico por semana?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p data-i18n="faq.a2">Depende del plan y de tu disponibilidad real. Trabajamos desde 3 sesiones semanales de 45 minutos hasta 6 sesiones de 90. La planificación respeta tu vida — si tenés menos tiempo, el plan rinde con menos tiempo.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal d2">
+        <button class="faq-q" aria-expanded="false">
+          <span data-i18n="faq.q3">¿Necesito un gimnasio o puedo entrenar en casa?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p data-i18n="faq.a3">Los dos son válidos. La planificación se adapta al equipamiento disponible — desde peso corporal y un par de mancuernas hasta sala completa de musculación. La variable no es el equipo, es la ejecución.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal d3">
+        <button class="faq-q" aria-expanded="false">
+          <span data-i18n="faq.q4">Tengo una lesión vieja, ¿puedo entrenar igual?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p data-i18n="faq.a4">Sí — de hecho es uno de los perfiles que más acompañamos. El plan se arma respetando tiempos reales de recuperación y, si hace falta, en coordinación con tu kinesiólogo o el de la red Lykos (Plan 03).</p>
+        </div>
+      </div>
+      <div class="faq-item reveal d4">
+        <button class="faq-q" aria-expanded="false">
+          <span data-i18n="faq.q5">Entreno desde el exterior — ¿cómo funciona el pago?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p data-i18n="faq.a5">Para alumnos internacionales cobramos en USD por transferencia, Wise o wallet cripto (USDT, USDC, DAI). Los precios en USD están indicados en cada plan. Para alumnos en Argentina, Mercado Pago y transferencia bancaria.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          <span data-i18n="faq.q6">¿Puedo probar un mes antes de comprometerme?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p data-i18n="faq.a6">Todos los planes son mensuales, no hay permanencia obligatoria. Si el primer mes no cuaja, no seguís. Lo único que te vas es con el aprendizaje. Así de simple.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">08</span>
+      <span class="eyebrow" data-i18n="contact.eyebrow">Empezar</span>
+    </div>
+    <div class="section-title reveal">
+      <h2 data-i18n-html="contact.title">Escribime y armemos <em>tu plan.</em></h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <p data-i18n="contact.intro">Respondo personalmente desde Mendoza. Atiendo alumnos locales y del exterior. Contame sobre tu objetivo, qué entrenás hoy y qué te gustaría cambiar. La primera consulta es gratis.</p>
+
+        <div class="channels">
+          <a href="https://wa.me/5492616257645" target="_blank" rel="noopener" class="channel">
+            <span class="icon">W</span>
+            <div>
+              <span class="label" data-i18n="contact.wa">WhatsApp directo</span>
+              <span class="value">+54 9 261 625 7645</span>
+            </div>
+          </a>
+          <a href="mailto:hola@lykosmethod.com" class="channel">
+            <span class="icon">@</span>
+            <div>
+              <span class="label" data-i18n="contact.mail">Email</span>
+              <span class="value">hola@lykosmethod.com</span>
+            </div>
+          </a>
+          <a href="https://instagram.com/lykosmethod" target="_blank" rel="noopener" class="channel">
+            <span class="icon">IG</span>
+            <div>
+              <span class="label" data-i18n="contact.ig">Instagram</span>
+              <span class="value">@lykosmethod</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal d1" id="contactForm">
+        <div class="field">
+          <label for="name" data-i18n="form.name">Nombre</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="field">
+          <label for="email" data-i18n="form.email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="field">
+          <label for="plan" data-i18n="form.plan">¿Qué plan te interesa?</label>
+          <select id="plan" name="plan">
+            <option value="0" data-i18n="form.plan.opt0">No estoy seguro/a todavía</option>
+            <option value="1" data-i18n="form.plan.opt1">Plan 01 — Rutina personalizada</option>
+            <option value="2" data-i18n="form.plan.opt2">Plan 02 — Planificación mensual</option>
+            <option value="3" data-i18n="form.plan.opt3">Plan 03 — Plan integral</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message" data-i18n="form.message">Contame sobre tu objetivo</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary magnetic" data-magnetic>
+          <span data-i18n="form.submit">Enviar por WhatsApp</span>
+          <span class="arrow">→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="brand-block">
+      LYKOS<em>method</em>
+      <p data-i18n="footer.tagline">Entrenamiento online que respeta tu cuerpo. Diseñado en Mendoza, Argentina — para todo el mundo.</p>
+    </div>
+    <div>
+      <h4 data-i18n="footer.explore">Explorar</h4>
+      <ul>
+        <li><a href="#method" data-i18n="nav.method">Método</a></li>
+        <li><a href="#flow" data-i18n="nav.flow">Proceso</a></li>
+        <li><a href="#anatomy" data-i18n="nav.anatomy">Anatomía</a></li>
+        <li><a href="#evidence" data-i18n="nav.evidence">Alumnos</a></li>
+        <li><a href="#plans" data-i18n="nav.plans">Planes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="footer.contact">Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/5492616257645">WhatsApp</a></li>
+        <li><a href="mailto:hola@lykosmethod.com">hola@lykosmethod.com</a></li>
+        <li><a href="https://instagram.com/lykosmethod" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="footer.legal">Legal</h4>
+      <ul>
+        <li><a href="#faq" data-i18n="footer.faq">FAQ</a></li>
+        <li><a href="#plans" data-i18n="footer.terms">Términos</a></li>
+        <li><a href="#plans" data-i18n="footer.privacy">Privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Lykos Method · <span data-i18n="footer.rights">Todos los derechos reservados</span></span>
+      <span data-i18n="footer.site">Sitio v2 — diseñado desde Mendoza</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+import * as THREE from 'https://esm.sh/three@0.161.0';
+import gsap from 'https://esm.sh/gsap@3.12.5';
+import ScrollTrigger from 'https://esm.sh/gsap@3.12.5/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+/* ========== Preloader ========== */
+(function preloader() {
+  const el = document.getElementById('preloader');
+  const count = document.getElementById('pcount');
+  let n = 0;
+  const iv = setInterval(() => {
+    n += Math.ceil(Math.random() * 9);
+    if (n >= 100) { n = 100; clearInterval(iv); setTimeout(() => el.classList.add('done'), 350); }
+    count.textContent = 'Loading · ' + String(n).padStart(2, '0');
+  }, 70);
+  window.addEventListener('load', () => {
+    setTimeout(() => { n = 100; count.textContent = 'Loading · 100'; el.classList.add('done'); clearInterval(iv); }, 900);
+  });
+})();
+
+/* ========== Custom cursor + magnetic ========== */
+(function cursor() {
+  if (matchMedia('(hover: none)').matches) return;
+  const dot = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  if (!dot || !ring) return;
+  let tx = 0, ty = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    tx = e.clientX; ty = e.clientY;
+    dot.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+  });
+  const tick = () => {
+    rx += (tx - rx) * 0.18;
+    ry += (ty - ry) * 0.18;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+    requestAnimationFrame(tick);
+  };
+  tick();
+
+  // Interactive elements grow the ring
+  const growSel = 'a, button, .pillar, .ig-tile, .channel, .anatomy-hot, .flow-step, .faq-q, .plan, .testimonial';
+  document.querySelectorAll(growSel).forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('grow'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('grow'));
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('[data-magnetic]').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const mx = e.clientX - r.left - r.width / 2;
+      const my = e.clientY - r.top - r.height / 2;
+      btn.style.transform = `translate(${mx * 0.18}px, ${my * 0.22}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+})();
+
+/* ========== Scroll progress + nav states + dot nav ========== */
+(function scrollChrome() {
+  const prog = document.getElementById('scrollProgress');
+  const topnav = document.getElementById('topnav');
+  const dotNav = document.getElementById('dotNav');
+  const dots = dotNav.querySelectorAll('a');
+  const sections = [...document.querySelectorAll('section[id], header[id]')];
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    topnav.classList.toggle('scrolled', y > 40);
+    dotNav.classList.toggle('visible', y > window.innerHeight * 0.7);
+    // Active section
+    let activeId = sections[0].id;
+    const trigger = y + window.innerHeight * 0.4;
+    for (const s of sections) {
+      if (s.offsetTop <= trigger) activeId = s.id;
+    }
+    dots.forEach(d => {
+      const on = d.getAttribute('href') === '#' + activeId;
+      d.classList.toggle('active', on);
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ========== Reveal on scroll ========== */
+(function reveal() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+/* ========== Number counters ========== */
+(function counters() {
+  const els = document.querySelectorAll('[data-count]');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const target = e.target;
+      const raw = target.textContent.trim();
+      const num = parseInt(raw.replace(/[^0-9]/g, ''), 10);
+      if (isNaN(num) || num === 0) { return; }
+      const suffix = raw.replace(/[0-9]/g, '');
+      const dur = 1400;
+      const t0 = performance.now();
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / dur);
+        const eased = 1 - Math.pow(1 - k, 3);
+        target.textContent = Math.round(num * eased).toString().padStart(2, '0') + suffix;
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ========== Pillars horizontal nav ========== */
+(function pillars() {
+  const vp = document.getElementById('pillarsViewport');
+  const prev = document.getElementById('pillarsPrev');
+  const next = document.getElementById('pillarsNext');
+  const progress = document.getElementById('pillarsProgress');
+  const count = document.getElementById('pillarsCount');
+  if (!vp) return;
+  const cards = [...vp.querySelectorAll('.pillar')];
+  const total = cards.length;
+
+  const step = () => cards[0].getBoundingClientRect().width + 19; // card + gap
+  prev.addEventListener('click', () => vp.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => vp.scrollBy({ left: step(), behavior: 'smooth' }));
+
+  const update = () => {
+    const max = vp.scrollWidth - vp.clientWidth;
+    const pct = max > 0 ? vp.scrollLeft / max : 0;
+    progress.style.background = `linear-gradient(90deg, var(--gold) ${pct * 100}%, var(--line-2) ${pct * 100}%)`;
+    const idx = Math.round(pct * (total - 1));
+    count.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    prev.disabled = vp.scrollLeft <= 2;
+    next.disabled = vp.scrollLeft >= max - 2;
+  };
+  vp.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* ========== Flow — interactive timeline ========== */
+(function flow() {
+  const steps = document.querySelectorAll('.flow-step');
+  const img = document.getElementById('flowImg');
+  const badge = document.getElementById('flowBadge');
+  const title = document.getElementById('flowTitle');
+  const desc = document.getElementById('flowDesc');
+  const checks = document.getElementById('flowChecks');
+
+  const data = {
+    es: [
+      {
+        img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=75',
+        badge: 'Paso 01 · Anamnesis',
+        titleHtml: 'Anamnesis <em>inicial</em>',
+        desc: 'Diagnóstico de entrada: historia clínica, patologías, lesiones previas, características físicas y objetivos. Sin esto, cualquier rutina es adivinanza. Dura entre 45 y 90 minutos, online o presencial en Mendoza.',
+        checks: ['Historia clínica', 'Test de movilidad', 'Objetivos medibles', 'Disponibilidad semanal']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1579758629938-03607ccdbaba?w=1200&q=75',
+        badge: 'Paso 02 · Plan',
+        titleHtml: 'Planificación <em>personalizada</em>',
+        desc: 'Enzo arma tu rutina desde su propia biblioteca de ejercicios — cada uno con video de ejecución grabado por él. Nada de planes copiados de internet. Entregable: plan con indicaciones técnicas escritas, acceso a la biblioteca y guía de carga para las primeras dos semanas.',
+        checks: ['Plan a medida', 'Videos por ejercicio', 'Guía de carga', 'Biblioteca Lykos']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=1200&q=75',
+        badge: 'Paso 03 · Feedback',
+        titleHtml: 'Entrenamiento <em>con feedback</em>',
+        desc: 'Entrenás con tu plan desde la plataforma. Dejás comentarios diarios, subís videos de tus ejecuciones cuando tengas dudas, y Enzo te devuelve correcciones técnicas en texto, audio o video según haga falta.',
+        checks: ['Feedback diario', 'Upload de videos', 'Corrección asincrónica', 'Plataforma privada']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=1200&q=75',
+        badge: 'Paso 04 · Seguimiento',
+        titleHtml: 'Seguimiento <em>quincenal</em>',
+        desc: 'Cada dos semanas revisamos el progreso juntos — por chat, video o llamada si hace falta despejar dudas. La carga se ajusta en base a lo que el cuerpo devuelve, no a un calendario rígido.',
+        checks: ['Revisión quincenal', 'Ajuste de carga', 'Videollamada si hace falta', 'Plan vivo, no estático']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=75',
+        badge: 'Paso 05 · Balance',
+        titleHtml: 'Balance <em>mensual</em>',
+        desc: 'Fin de mes: subís fotos de progreso, medimos lo que cambió y rearmamos el plan para el ciclo siguiente. El método respira con vos — cada mes es un reset honesto del sistema.',
+        checks: ['Fotos de progreso', 'Medición corporal', 'Nuevo ciclo', 'Informe mensual']
+      }
+    ],
+    en: [
+      {
+        img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=75',
+        badge: 'Step 01 · Anamnesis',
+        titleHtml: 'Initial <em>assessment</em>',
+        desc: 'Entry diagnosis: clinical history, conditions, previous injuries, physical profile and goals. Without this, any routine is guesswork. 45 to 90 minutes, online or in person in Mendoza.',
+        checks: ['Clinical history', 'Mobility test', 'Measurable goals', 'Weekly availability']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1579758629938-03607ccdbaba?w=1200&q=75',
+        badge: 'Step 02 · Plan',
+        titleHtml: 'Personalized <em>plan</em>',
+        desc: 'Enzo builds your routine from his own exercise library — each one with execution video recorded by him. No copy-pasted internet plans. Deliverable: written technical plan, library access and load guide for the first two weeks.',
+        checks: ['Custom plan', 'Video per exercise', 'Load guide', 'Lykos library']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=1200&q=75',
+        badge: 'Step 03 · Feedback',
+        titleHtml: 'Training <em>with feedback</em>',
+        desc: 'You train with your plan inside the platform. Daily comments, upload your execution videos when in doubt, and Enzo returns corrections in text, audio or video depending on what\'s needed.',
+        checks: ['Daily feedback', 'Video upload', 'Async corrections', 'Private platform']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=1200&q=75',
+        badge: 'Step 04 · Follow-up',
+        titleHtml: 'Bi-weekly <em>check-in</em>',
+        desc: 'Every two weeks we review progress together — chat, video or call if needed. Load is tuned by what the body returns, not by a rigid calendar.',
+        checks: ['Bi-weekly review', 'Load adjustment', 'Video call if needed', 'Living plan']
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=75',
+        badge: 'Step 05 · Balance',
+        titleHtml: 'Monthly <em>balance</em>',
+        desc: 'End of month: you upload progress photos, we measure what changed and rebuild the plan for the next cycle. The method breathes with you — each month is an honest system reset.',
+        checks: ['Progress photos', 'Body measurement', 'New cycle', 'Monthly report']
+      }
+    ]
+  };
+
+  const apply = (idx) => {
+    steps.forEach(s => s.classList.remove('active'));
+    steps[idx].classList.add('active');
+    const lang = document.documentElement.dataset.lang || 'es';
+    const d = data[lang][idx];
+    img.style.opacity = 0.2;
+    setTimeout(() => {
+      img.src = d.img;
+      img.style.opacity = 0.75;
+    }, 200);
+    badge.textContent = d.badge;
+    title.innerHTML = d.titleHtml;
+    desc.textContent = d.desc;
+    checks.innerHTML = d.checks.map(c => `<span>${c}</span>`).join('');
+  };
+
+  steps.forEach(s => {
+    s.addEventListener('click', () => apply(+s.dataset.flow));
+    s.addEventListener('mouseenter', () => apply(+s.dataset.flow));
+  });
+  window.__flowApply = apply;
+})();
+
+/* ========== FAQ accordion ========== */
+(function faq() {
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
+
+/* ========== Plans currency toggle ========== */
+(function plans() {
+  const wrap = document.getElementById('plansCurrency');
+  if (!wrap) return;
+  wrap.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      wrap.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const ccy = btn.dataset.ccy;
+      document.querySelectorAll('.plan .amount').forEach(a => {
+        a.textContent = ccy === 'USD' ? a.dataset.priceUsd : a.dataset.priceArs;
+      });
+    });
+  });
+})();
+
+/* ========== Contact form → WhatsApp ========== */
+(function form() {
+  const f = document.getElementById('contactForm');
+  if (!f) return;
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = f.name.value.trim();
+    const email = f.email.value.trim();
+    const plan = f.plan.options[f.plan.selectedIndex].textContent;
+    const msg = f.message.value.trim();
+    const lang = document.documentElement.dataset.lang || 'es';
+    const text = lang === 'en'
+      ? `Hi Enzo, I'm ${name} (${email}).\n\nPlan: ${plan}\n\n${msg}`
+      : `Hola Enzo, soy ${name} (${email}).\n\nPlan: ${plan}\n\n${msg}`;
+    window.open(`https://wa.me/5492616257645?text=${encodeURIComponent(text)}`, '_blank');
+  });
+})();
+
+/* ========== i18n ========== */
+const I18N = {
+  es: {
+    'nav.tag': 'v2 · Enzo Nievas',
+    'nav.method': 'Método', 'nav.flow': 'Proceso', 'nav.anatomy': 'Anatomía',
+    'nav.coach': 'Entrenador', 'nav.evidence': 'Alumnos', 'nav.plans': 'Planes', 'nav.contact': 'Contacto',
+    'nav.cta': 'Empezar',
+    'hero.eyebrow': 'Lykos Method / Mendoza, Argentina',
+    'hero.sub': 'Un sistema de entrenamiento basado en la biomecánica, la fuerza inteligente y el movimiento eficiente. Diagnóstico, planificación y seguimiento personalizados — desde Mendoza al mundo.',
+    'hero.cta1': 'Ver planes', 'hero.cta2': 'Escribir por WhatsApp',
+    'hero.meta1': 'Intensidades — alta, media, baja',
+    'hero.meta2': 'Desde cualquier país, tu huso horario',
+    'hero.meta3': 'Regla — salud siempre primero',
+    'hero.plabel': 'placeholder · retrato real pendiente',
+    'hero.live': 'alumnos activos · ES/EN',
+    'hero.cal1': 'Biomecánica aplicada', 'hero.cal2': 'Fuerza inteligente', 'hero.scroll': 'Scroll',
+    'method.eyebrow': 'El método · cinco pilares',
+    'method.title': 'Cinco pilares, <em>un método.</em>',
+    'method.intro': 'Un sistema de entrenamiento basado en la biomecánica, la fuerza inteligente y el movimiento eficiente. Cada pilar es una decisión de diseño que atraviesa todas las planificaciones. Deslizá para recorrerlos.',
+    'method.c1.title': 'Movimiento <em>eficiente</em>',
+    'method.c1.desc': 'Cada ejercicio tiene un patrón correcto. Lo encontramos, lo practicamos y lo integramos a tu cuerpo antes de subir la carga.',
+    'method.c1.tag': 'Base técnica',
+    'method.c2.title': 'Fuerza <em>inteligente</em>',
+    'method.c2.desc': 'No se trata de levantar más — se trata de levantar mejor. Carga progresiva con propósito, control y recuperación planificada.',
+    'method.c2.tag': 'Progresión',
+    'method.c3.title': 'Biomecánica <em>aplicada</em>',
+    'method.c3.desc': 'Entender cómo se mueve tu cuerpo — palancas, rangos, tensiones — para entrenarlo como necesita, no como dice internet.',
+    'method.c3.tag': 'Eje del método',
+    'method.c4.title': 'Adaptación <em>progresiva</em>',
+    'method.c4.desc': 'El plan se ajusta a tu evolución. Lo que funciona hoy se recalibra mañana según lo que el cuerpo devuelve en cada ciclo.',
+    'method.c4.tag': 'Ciclo dinámico',
+    'method.c5.title': 'Conexión <em>cuerpo-mente</em>',
+    'method.c5.desc': 'Entrenar con conciencia. Sentir el músculo, controlar el movimiento, construir desde adentro. La técnica empieza en la cabeza.',
+    'method.c5.tag': 'Sello Lykos',
+    'inter.quote': '<em>Fuerza con inteligencia,</em> movimiento con propósito.',
+    'inter.attrib': '— Enzo Nievas · Lykos Method',
+    'flow.eyebrow': 'Cómo trabajamos',
+    'flow.title': 'Del diagnóstico al balance, <em>en cinco pasos.</em>',
+    'flow.intro': 'Cada alumno recorre el mismo proceso. Cliqueá cada paso para ver qué incluye y qué entregables salen de él.',
+    'flow.s1.title': 'Anamnesis <em>inicial</em>', 'flow.s1.short': 'Diagnóstico completo: historia clínica, lesiones, objetivos, disponibilidad.',
+    'flow.s2.title': 'Planificación <em>personalizada</em>', 'flow.s2.short': 'Tu rutina armada desde la biblioteca propia de Enzo, con videos de ejecución.',
+    'flow.s3.title': 'Entrenamiento <em>con feedback</em>', 'flow.s3.short': 'Entrenás desde la plataforma. Comentarios diarios y videos para corrección técnica.',
+    'flow.s4.title': 'Seguimiento <em>quincenal</em>', 'flow.s4.short': 'Revisión de progreso con videollamada si hace falta despejar dudas.',
+    'flow.s5.title': 'Balance <em>mensual</em>', 'flow.s5.short': 'Fotos de progreso, medición y rearmado del plan para el ciclo siguiente.',
+    'anatomy.eyebrow': 'Anatomía · el eje',
+    'anatomy.title': 'La columna <em>no es una parte.</em> Es el eje.',
+    'anatomy.desc': 'Cada decisión de entrenamiento pasa por la columna — literal y figurativamente. Si el eje cede, todo lo demás se rompe con el tiempo. Por eso está en el centro del método Lykos.',
+    'anatomy.desc2': 'Cliqueá cada región para ver cómo trabajamos esa zona en el método.',
+    'anatomy.h1': 'Cervical', 'anatomy.h1n': 'postura · cabeza',
+    'anatomy.h2': 'Torácica', 'anatomy.h2n': 'movilidad · respiración',
+    'anatomy.h3': 'Lumbar', 'anatomy.h3n': 'fuerza · estabilidad',
+    'anatomy.h4': 'Sacro', 'anatomy.h4n': 'cadera · transferencia',
+    'anatomy.label1': 'Lykos Spine', 'anatomy.label2': 'estudio interactivo',
+    'coach.eyebrow': 'El entrenador',
+    'coach.title': 'Enzo <em>Nievas.</em>',
+    'coach.bio1': 'Profesor de Educación Física especializado en entrenamiento de fuerza y biomecánica aplicada, con experiencia en el trabajo personalizado en gimnasio y en la readaptación de personas con molestias o lesiones.',
+    'coach.bio2': 'A lo largo de su formación desarrolló un enfoque basado en el movimiento eficiente, la técnica correcta y la progresión inteligente — integrando herramientas de entrenamiento, prevención y control corporal.',
+    'coach.quote': '"Mi trabajo no es llevarte al límite. Es llevarte a tu potencial, sin romperte en el camino."',
+    'coach.cred1': 'Profesor de EF', 'coach.cred2': 'Especialización en salud', 'coach.cred3': 'Mendoza, AR',
+    'coach.cred4': 'Alumnos online', 'coach.cred5': 'ES / EN',
+    'coach.plabel': 'placeholder · retrato real pendiente',
+    'coach.qatitle': 'Preguntale a Enzo directo por WhatsApp',
+    'coach.q1': '¿Puedo entrenar con una lesión?',
+    'coach.q2': 'Nunca entrené en serio, ¿por dónde empiezo?',
+    'coach.q3': 'Entreno desde el exterior — ¿cómo pago?',
+    'evidence.eyebrow': 'Evidencia · alumnos',
+    'evidence.title': 'Resultados que el cuerpo <em>confirma.</em>',
+    'evidence.intro': 'Lo que cambia en un alumno después de aplicar el método durante un ciclo completo. Medimos movilidad, fuerza máxima, dolores recurrentes y adherencia.',
+    'evidence.r1': 'Alumnos online formados',
+    'evidence.r2': 'Años perfeccionando el método',
+    'evidence.r3': 'Adherencia a los 90 días',
+    'evidence.r4': 'Lesiones atribuibles al plan',
+    'evidence.t1.q': 'Arranqué con miedo por una hernia lumbar. A los dos meses volví a hacer sentadillas sin dolor. Nunca me sentí apurado — el plan respetó mis tiempos reales.',
+    'evidence.t1.n': 'Martín G.', 'evidence.t1.r': 'Plan 02 · Mendoza · 6 meses',
+    'evidence.t2.q': 'Entreno desde Madrid. El feedback diario y las correcciones por video me hicieron sentir que tenía un entrenador al lado, no un PDF en el mail.',
+    'evidence.t2.n': 'Sofía R.', 'evidence.t2.r': 'Plan 02 · España · 4 meses',
+    'evidence.t3.q': 'Tengo 62 años y pensé que ya era tarde. Enzo me armó un plan que respeta lo que mi cuerpo puede hoy. Subo escaleras sin agitarme por primera vez en años.',
+    'evidence.t3.n': 'Liliana M.', 'evidence.t3.r': 'Plan 03 · Godoy Cruz · 1 año',
+    'evidence.igtitle': 'Fragmentos del método <em>en Instagram</em>',
+    'evidence.igcta': '@lykosmethod →',
+    'evidence.ig1': 'Técnica de sentadilla', 'evidence.ig2': 'Corrección de peso muerto',
+    'evidence.ig3': 'Movilidad de cadera', 'evidence.ig4': 'Progreso alumna',
+    'evidence.ig5': 'Rehabilitación lumbar', 'evidence.ig6': 'Adultos mayores',
+    'plans.eyebrow': 'Planes · tres modalidades',
+    'plans.title': 'Elegí el nivel de <em>acompañamiento.</em>',
+    'plans.intro': 'De rutina única a plan integral con red de profesionales. El mismo método, tres niveles de inmersión. Pagos en ARS vía Mercado Pago · internacionales en USD.',
+    'plans.p1.title': 'Rutina <em>personalizada</em>',
+    'plans.p1.desc': 'Una planificación diseñada a partir de tu objetivo, con indicaciones técnicas y videos de cada ejercicio. Entrenás a tu ritmo, sin seguimiento posterior.',
+    'plans.p1.f1': 'Anamnesis inicial', 'plans.p1.f2': 'Planificación única a medida', 'plans.p1.f3': 'Videos de ejecución de Enzo',
+    'plans.p1.f4': 'Indicaciones técnicas escritas', 'plans.p1.f5': 'Acceso a biblioteca de ejercicios', 'plans.p1.per': 'Pago único',
+    'plans.p2.badge': 'Más elegido',
+    'plans.p2.title': 'Planificación <em>mensual</em>',
+    'plans.p2.desc': 'La rutina personalizada más el seguimiento que la mantiene viva. Medición de progreso cada dos semanas, con videollamada si hace falta ajustar carga.',
+    'plans.p2.f1': 'Todo lo del Plan 01', 'plans.p2.f2': 'Feedback diario en plataforma', 'plans.p2.f3': 'Upload de tus videos para corrección',
+    'plans.p2.f4': 'Seguimiento quincenal', 'plans.p2.f5': 'Videollamada de ajuste', 'plans.p2.f6': 'Balance mensual con fotos', 'plans.p2.per': 'Por mes',
+    'plans.p3.title': 'Plan <em>integral</em>',
+    'plans.p3.desc': 'Todo lo del Plan 02 más la participación activa de otros profesionales de la salud — nutricionista y kinesiólogo coordinados.',
+    'plans.p3.f1': 'Todo lo del Plan 02', 'plans.p3.f2': 'Nutricionista asociada', 'plans.p3.f3': 'Kinesiólogo asociado',
+    'plans.p3.f4': 'Coordinación interdisciplinaria', 'plans.p3.f5': 'Prioridad de agenda', 'plans.p3.per': 'Por mes',
+    'plans.cta': 'Empezar',
+    'plans.note': 'Pagos en ARS vía <strong>Mercado Pago</strong> · Internacionales en <strong>USD</strong> (transferencia, wallet cripto o Wise).',
+    'comp.head': 'Incluye',
+    'comp.r1': 'Anamnesis inicial', 'comp.r2': 'Planificación a medida', 'comp.r3': 'Videos de ejecución',
+    'comp.r4': 'Feedback diario', 'comp.r5': 'Corrección por video', 'comp.r6': 'Seguimiento quincenal',
+    'comp.r7': 'Balance mensual con fotos', 'comp.r8': 'Nutricionista asociada', 'comp.r9': 'Kinesiólogo asociado',
+    'comp.r10': 'Prioridad de agenda',
+    'profiles.eyebrow': 'Perfiles que acompaño',
+    'profiles.intro': 'Cada plan se adapta al perfil del alumno — desde principiantes hasta alto rendimiento, pasando por rehabilitación y adultos mayores. Todo bajo la misma filosofía: cuidado del cuerpo primero.',
+    'profiles.p1.title': 'Alto <em>rendimiento</em>', 'profiles.p1.desc': 'Ciclos de carga, tapering y recuperación activa para competidores. Rendimiento con el cuidado del cuerpo como techo, no como opción.',
+    'profiles.p2.title': 'Rehabilitación <em>de lesiones</em>', 'profiles.p2.desc': 'Vuelta progresiva tras una lesión, respetando los tiempos reales de recuperación. Coordinación con kinesiólogo si hace falta.',
+    'profiles.p3.title': 'Reeducación <em>muscular</em>', 'profiles.p3.desc': 'Reactivar cadenas y patrones que dejaron de funcionar. Para post-operatorios o para quien necesita reaprender a moverse.',
+    'profiles.p4.title': 'Adultos <em>mayores</em>', 'profiles.p4.desc': 'Fuerza, movilidad y autonomía. Prevención de caídas y trabajo articular adaptado. La edad guía la carga, nunca la limita.',
+    'profiles.p5.title': 'Principiantes <em>absolutos</em>', 'profiles.p5.desc': 'Primera vez entrenando en serio. Construcción gradual del hábito y técnica desde el primer día. Sin romperte antes de empezar.',
+    'profiles.p6.title': 'Salud <em>y bienestar</em>', 'profiles.p6.desc': 'Actividad física como medicina preventiva. Menos dolores, mejor sueño, más energía. Entrenar para vivir mejor, no para una foto.',
+    'faq.eyebrow': 'Preguntas frecuentes',
+    'faq.title': 'Lo que solés <em>preguntar primero.</em>',
+    'faq.q1': '¿Tengo que ser ya deportista para empezar?',
+    'faq.a1': 'No. El método se construye desde donde estás hoy. La anamnesis inicial calibra el punto de partida real — principiante absoluto, persona con lesión, adulto mayor, alto rendimiento — y el plan se ajusta desde ahí.',
+    'faq.q2': '¿Cuánto tiempo dedico por semana?',
+    'faq.a2': 'Depende del plan y de tu disponibilidad real. Trabajamos desde 3 sesiones semanales de 45 minutos hasta 6 sesiones de 90. La planificación respeta tu vida — si tenés menos tiempo, el plan rinde con menos tiempo.',
+    'faq.q3': '¿Necesito un gimnasio o puedo entrenar en casa?',
+    'faq.a3': 'Los dos son válidos. La planificación se adapta al equipamiento disponible — desde peso corporal y un par de mancuernas hasta sala completa de musculación. La variable no es el equipo, es la ejecución.',
+    'faq.q4': 'Tengo una lesión vieja, ¿puedo entrenar igual?',
+    'faq.a4': 'Sí — de hecho es uno de los perfiles que más acompañamos. El plan se arma respetando tiempos reales de recuperación y, si hace falta, en coordinación con tu kinesiólogo o el de la red Lykos (Plan 03).',
+    'faq.q5': 'Entreno desde el exterior — ¿cómo funciona el pago?',
+    'faq.a5': 'Para alumnos internacionales cobramos en USD por transferencia, Wise o wallet cripto (USDT, USDC, DAI). Los precios en USD están indicados en cada plan. Para alumnos en Argentina, Mercado Pago y transferencia bancaria.',
+    'faq.q6': '¿Puedo probar un mes antes de comprometerme?',
+    'faq.a6': 'Todos los planes son mensuales, no hay permanencia obligatoria. Si el primer mes no cuaja, no seguís. Lo único que te vas es con el aprendizaje. Así de simple.',
+    'contact.eyebrow': 'Empezar',
+    'contact.title': 'Escribime y armemos <em>tu plan.</em>',
+    'contact.intro': 'Respondo personalmente desde Mendoza. Atiendo alumnos locales y del exterior. Contame sobre tu objetivo, qué entrenás hoy y qué te gustaría cambiar. La primera consulta es gratis.',
+    'contact.wa': 'WhatsApp directo', 'contact.mail': 'Email', 'contact.ig': 'Instagram',
+    'form.name': 'Nombre', 'form.email': 'Email', 'form.plan': '¿Qué plan te interesa?',
+    'form.plan.opt0': 'No estoy seguro/a todavía', 'form.plan.opt1': 'Plan 01 — Rutina personalizada',
+    'form.plan.opt2': 'Plan 02 — Planificación mensual', 'form.plan.opt3': 'Plan 03 — Plan integral',
+    'form.message': 'Contame sobre tu objetivo', 'form.submit': 'Enviar por WhatsApp',
+    'footer.tagline': 'Entrenamiento online que respeta tu cuerpo. Diseñado en Mendoza, Argentina — para todo el mundo.',
+    'footer.explore': 'Explorar', 'footer.contact': 'Contacto', 'footer.legal': 'Legal',
+    'footer.faq': 'FAQ', 'footer.terms': 'Términos', 'footer.privacy': 'Privacidad',
+    'footer.rights': 'Todos los derechos reservados', 'footer.site': 'Sitio v2 — diseñado desde Mendoza'
+  },
+  en: {
+    'nav.tag': 'v2 · Enzo Nievas',
+    'nav.method': 'Method', 'nav.flow': 'Process', 'nav.anatomy': 'Anatomy',
+    'nav.coach': 'Coach', 'nav.evidence': 'Athletes', 'nav.plans': 'Plans', 'nav.contact': 'Contact',
+    'nav.cta': 'Start',
+    'hero.eyebrow': 'Lykos Method / Mendoza, Argentina',
+    'hero.sub': 'A training system built on biomechanics, intelligent strength and efficient movement. Personalized assessment, planning and follow-up — from Mendoza to the world.',
+    'hero.cta1': 'See plans', 'hero.cta2': 'Message on WhatsApp',
+    'hero.meta1': 'Intensities — high, mid, low',
+    'hero.meta2': 'Any country, any timezone',
+    'hero.meta3': 'Rule — health always first',
+    'hero.plabel': 'placeholder · real portrait pending',
+    'hero.live': 'active athletes · ES/EN',
+    'hero.cal1': 'Applied biomechanics', 'hero.cal2': 'Intelligent strength', 'hero.scroll': 'Scroll',
+    'method.eyebrow': 'The method · five pillars',
+    'method.title': 'Five pillars, <em>one method.</em>',
+    'method.intro': 'A training system built on biomechanics, intelligent strength and efficient movement. Each pillar is a design decision that shapes every plan. Scroll through them.',
+    'method.c1.title': 'Efficient <em>movement</em>',
+    'method.c1.desc': 'Every exercise has a correct pattern. We find it, we drill it, we integrate it into your body before adding load.',
+    'method.c1.tag': 'Technical base',
+    'method.c2.title': 'Intelligent <em>strength</em>',
+    'method.c2.desc': 'It\'s not about lifting more — it\'s about lifting better. Progressive load with purpose, control and planned recovery.',
+    'method.c2.tag': 'Progression',
+    'method.c3.title': 'Applied <em>biomechanics</em>',
+    'method.c3.desc': 'Understanding how your body moves — levers, ranges, tensions — so we train it how it needs, not how the internet says.',
+    'method.c3.tag': 'Core of the method',
+    'method.c4.title': 'Progressive <em>adaptation</em>',
+    'method.c4.desc': 'The plan adjusts to your evolution. What works today is recalibrated tomorrow based on what the body returns each cycle.',
+    'method.c4.tag': 'Dynamic cycle',
+    'method.c5.title': 'Body-mind <em>connection</em>',
+    'method.c5.desc': 'Training with awareness. Feel the muscle, control the movement, build from the inside. Technique starts in the head.',
+    'method.c5.tag': 'Lykos signature',
+    'inter.quote': '<em>Strength with intelligence,</em> movement with purpose.',
+    'inter.attrib': '— Enzo Nievas · Lykos Method',
+    'flow.eyebrow': 'How we work',
+    'flow.title': 'From assessment to balance, <em>in five steps.</em>',
+    'flow.intro': 'Every athlete goes through the same process. Click each step to see what\'s included and what comes out of it.',
+    'flow.s1.title': 'Initial <em>assessment</em>', 'flow.s1.short': 'Full diagnosis: clinical history, injuries, goals, availability.',
+    'flow.s2.title': 'Personalized <em>planning</em>', 'flow.s2.short': 'Your routine built from Enzo\'s own library, with execution videos.',
+    'flow.s3.title': 'Training <em>with feedback</em>', 'flow.s3.short': 'Train inside the platform. Daily comments and videos for corrections.',
+    'flow.s4.title': 'Bi-weekly <em>follow-up</em>', 'flow.s4.short': 'Progress review with a video call if you need to clear doubts.',
+    'flow.s5.title': 'Monthly <em>balance</em>', 'flow.s5.short': 'Progress photos, measurement, and plan rebuild for the next cycle.',
+    'anatomy.eyebrow': 'Anatomy · the axis',
+    'anatomy.title': 'The spine <em>is not a part.</em> It\'s the axis.',
+    'anatomy.desc': 'Every training decision passes through the spine — literally and figuratively. If the axis gives way, everything else breaks over time. That\'s why it sits at the center of the Lykos method.',
+    'anatomy.desc2': 'Click each region to see how we work that zone in the method.',
+    'anatomy.h1': 'Cervical', 'anatomy.h1n': 'posture · head',
+    'anatomy.h2': 'Thoracic', 'anatomy.h2n': 'mobility · breathing',
+    'anatomy.h3': 'Lumbar', 'anatomy.h3n': 'strength · stability',
+    'anatomy.h4': 'Sacrum', 'anatomy.h4n': 'hip · transfer',
+    'anatomy.label1': 'Lykos Spine', 'anatomy.label2': 'interactive study',
+    'coach.eyebrow': 'The coach',
+    'coach.title': 'Enzo <em>Nievas.</em>',
+    'coach.bio1': 'Physical Education teacher specialized in strength training and applied biomechanics, with experience in personalized gym work and in the rehabilitation of people with discomfort or injuries.',
+    'coach.bio2': 'Throughout his training he developed an approach based on efficient movement, correct technique and intelligent progression — integrating training tools, prevention and body control.',
+    'coach.quote': '"My job is not to push you to the limit. It\'s to take you to your potential without breaking you along the way."',
+    'coach.cred1': 'PE Teacher', 'coach.cred2': 'Health specialization', 'coach.cred3': 'Mendoza, AR',
+    'coach.cred4': 'Online athletes', 'coach.cred5': 'ES / EN',
+    'coach.plabel': 'placeholder · real portrait pending',
+    'coach.qatitle': 'Ask Enzo directly on WhatsApp',
+    'coach.q1': 'Can I train with an injury?',
+    'coach.q2': 'Never trained seriously — where do I start?',
+    'coach.q3': 'I train from abroad — how do I pay?',
+    'evidence.eyebrow': 'Evidence · athletes',
+    'evidence.title': 'Results the body <em>confirms.</em>',
+    'evidence.intro': 'What changes in an athlete after one full cycle of the method. We measure mobility, max strength, recurring pain and adherence.',
+    'evidence.r1': 'Online athletes trained',
+    'evidence.r2': 'Years refining the method',
+    'evidence.r3': 'Adherence at 90 days',
+    'evidence.r4': 'Injuries attributable to the plan',
+    'evidence.t1.q': 'I started terrified because of a lumbar hernia. Two months in I was squatting again without pain. I never felt rushed — the plan respected my real timing.',
+    'evidence.t1.n': 'Martín G.', 'evidence.t1.r': 'Plan 02 · Mendoza · 6 months',
+    'evidence.t2.q': 'I train from Madrid. The daily feedback and video corrections made me feel I had a coach next to me, not a PDF in my inbox.',
+    'evidence.t2.n': 'Sofía R.', 'evidence.t2.r': 'Plan 02 · Spain · 4 months',
+    'evidence.t3.q': 'I\'m 62 and I thought it was too late. Enzo built me a plan that respects what my body can do today. I climb stairs without losing my breath for the first time in years.',
+    'evidence.t3.n': 'Liliana M.', 'evidence.t3.r': 'Plan 03 · Godoy Cruz · 1 year',
+    'evidence.igtitle': 'Method fragments <em>on Instagram</em>',
+    'evidence.igcta': '@lykosmethod →',
+    'evidence.ig1': 'Squat technique', 'evidence.ig2': 'Deadlift correction',
+    'evidence.ig3': 'Hip mobility', 'evidence.ig4': 'Athlete progress',
+    'evidence.ig5': 'Lumbar rehab', 'evidence.ig6': 'Older adults',
+    'plans.eyebrow': 'Plans · three tiers',
+    'plans.title': 'Choose your <em>level of support.</em>',
+    'plans.intro': 'From single routine to integral plan with a professional network. Same method, three levels of immersion. ARS payments via Mercado Pago · international in USD.',
+    'plans.p1.title': 'Personalized <em>routine</em>',
+    'plans.p1.desc': 'A plan designed around your goal, with technical indications and a video per exercise. You train at your own pace, with no follow-up.',
+    'plans.p1.f1': 'Initial assessment', 'plans.p1.f2': 'Single custom plan', 'plans.p1.f3': 'Enzo\'s execution videos',
+    'plans.p1.f4': 'Written technical notes', 'plans.p1.f5': 'Exercise library access', 'plans.p1.per': 'One-time payment',
+    'plans.p2.badge': 'Most chosen',
+    'plans.p2.title': 'Monthly <em>planning</em>',
+    'plans.p2.desc': 'The personalized routine plus the follow-up that keeps it alive. Progress measurement every two weeks, with a video call if load needs adjusting.',
+    'plans.p2.f1': 'Everything in Plan 01', 'plans.p2.f2': 'Daily platform feedback', 'plans.p2.f3': 'Upload your videos for correction',
+    'plans.p2.f4': 'Bi-weekly follow-up', 'plans.p2.f5': 'Adjustment video call', 'plans.p2.f6': 'Monthly balance with photos', 'plans.p2.per': 'Per month',
+    'plans.p3.title': 'Integral <em>plan</em>',
+    'plans.p3.desc': 'Everything in Plan 02 plus active participation from other health professionals — nutritionist and physiotherapist coordinated.',
+    'plans.p3.f1': 'Everything in Plan 02', 'plans.p3.f2': 'Associated nutritionist', 'plans.p3.f3': 'Associated physiotherapist',
+    'plans.p3.f4': 'Interdisciplinary coordination', 'plans.p3.f5': 'Priority scheduling', 'plans.p3.per': 'Per month',
+    'plans.cta': 'Start',
+    'plans.note': 'ARS payments via <strong>Mercado Pago</strong> · International in <strong>USD</strong> (bank transfer, crypto wallet or Wise).',
+    'comp.head': 'Includes',
+    'comp.r1': 'Initial assessment', 'comp.r2': 'Custom planning', 'comp.r3': 'Execution videos',
+    'comp.r4': 'Daily feedback', 'comp.r5': 'Video correction', 'comp.r6': 'Bi-weekly follow-up',
+    'comp.r7': 'Monthly balance with photos', 'comp.r8': 'Associated nutritionist', 'comp.r9': 'Associated physiotherapist',
+    'comp.r10': 'Priority scheduling',
+    'profiles.eyebrow': 'Athlete profiles',
+    'profiles.intro': 'Every plan adapts to the athlete — beginners to high performance, rehabilitation to older adults. All under the same philosophy: body care first.',
+    'profiles.p1.title': 'High <em>performance</em>', 'profiles.p1.desc': 'Load cycles, tapering and active recovery for competitors. Performance with body care as the ceiling, not as an option.',
+    'profiles.p2.title': 'Injury <em>rehab</em>', 'profiles.p2.desc': 'Progressive return after injury, respecting real recovery timing. Coordination with a physio if needed.',
+    'profiles.p3.title': 'Muscular <em>re-education</em>', 'profiles.p3.desc': 'Reactivating chains and patterns that stopped working. For post-surgery or for those relearning to move.',
+    'profiles.p4.title': 'Older <em>adults</em>', 'profiles.p4.desc': 'Strength, mobility and autonomy. Fall prevention and adapted joint work. Age guides load — never limits it.',
+    'profiles.p5.title': 'Absolute <em>beginners</em>', 'profiles.p5.desc': 'First time training seriously. Gradual habit and technique building from day one. No breaking before you start.',
+    'profiles.p6.title': 'Health <em>& wellness</em>', 'profiles.p6.desc': 'Physical activity as preventive medicine. Less pain, better sleep, more energy. Train to live better, not for a photo.',
+    'faq.eyebrow': 'Frequently asked',
+    'faq.title': 'What you ask <em>first.</em>',
+    'faq.q1': 'Do I have to be an athlete already to start?',
+    'faq.a1': 'No. The method is built from where you are today. The initial assessment calibrates the real starting point — absolute beginner, injured, older adult, high performance — and the plan adjusts from there.',
+    'faq.q2': 'How much time do I dedicate per week?',
+    'faq.a2': 'Depends on the plan and your real availability. We work from 3 weekly sessions of 45 minutes to 6 of 90. The plan respects your life — less time means the plan performs with less time.',
+    'faq.q3': 'Do I need a gym or can I train at home?',
+    'faq.a3': 'Both work. The plan adapts to available equipment — from bodyweight and a pair of dumbbells to a full weight room. The variable is not the gear, it\'s the execution.',
+    'faq.q4': 'I have an old injury — can I still train?',
+    'faq.a4': 'Yes — in fact it\'s one of the profiles we support most. The plan is built respecting real recovery timing and, if needed, in coordination with your physio or the Lykos network (Plan 03).',
+    'faq.q5': 'I train from abroad — how does payment work?',
+    'faq.a5': 'For international athletes we charge in USD via bank transfer, Wise or crypto wallet (USDT, USDC, DAI). USD prices are listed in each plan. For Argentina, Mercado Pago and bank transfer.',
+    'faq.q6': 'Can I try a month before committing?',
+    'faq.a6': 'All plans are monthly, no mandatory tenure. If the first month doesn\'t click, you don\'t continue. You leave with the learning. That simple.',
+    'contact.eyebrow': 'Start',
+    'contact.title': 'Write me and let\'s build <em>your plan.</em>',
+    'contact.intro': 'I reply personally from Mendoza. I take local and international athletes. Tell me about your goal, what you train today and what you\'d like to change. First consultation is free.',
+    'contact.wa': 'Direct WhatsApp', 'contact.mail': 'Email', 'contact.ig': 'Instagram',
+    'form.name': 'Name', 'form.email': 'Email', 'form.plan': 'Which plan are you interested in?',
+    'form.plan.opt0': 'Not sure yet', 'form.plan.opt1': 'Plan 01 — Personalized routine',
+    'form.plan.opt2': 'Plan 02 — Monthly planning', 'form.plan.opt3': 'Plan 03 — Integral plan',
+    'form.message': 'Tell me about your goal', 'form.submit': 'Send via WhatsApp',
+    'footer.tagline': 'Online training that respects your body. Designed in Mendoza, Argentina — for the whole world.',
+    'footer.explore': 'Explore', 'footer.contact': 'Contact', 'footer.legal': 'Legal',
+    'footer.faq': 'FAQ', 'footer.terms': 'Terms', 'footer.privacy': 'Privacy',
+    'footer.rights': 'All rights reserved', 'footer.site': 'Site v2 — designed from Mendoza'
+  }
+};
+
+(function i18n() {
+  const apply = (lang) => {
+    document.documentElement.lang = lang;
+    document.documentElement.dataset.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (I18N[lang][k] !== undefined) el.textContent = I18N[lang][k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.dataset.i18nHtml;
+      if (I18N[lang][k] !== undefined) el.innerHTML = I18N[lang][k];
+    });
+    document.querySelectorAll('.lang button').forEach(b => {
+      b.classList.toggle('active', b.dataset.setlang === lang);
+    });
+    // Refresh flow detail panel since it uses its own data
+    if (window.__flowApply) {
+      const activeIdx = [...document.querySelectorAll('.flow-step')].findIndex(s => s.classList.contains('active'));
+      window.__flowApply(activeIdx >= 0 ? activeIdx : 0);
+    }
+  };
+  document.querySelectorAll('.lang button').forEach(btn => {
+    btn.addEventListener('click', () => apply(btn.dataset.setlang));
+  });
+  apply('es');
+})();
+
+/* ========== Three.js spine with hotspot rotation ========== */
+(function spine() {
+  const canvas = document.getElementById('spineCanvas');
+  const fallback = document.getElementById('spineFallback');
+  if (!canvas) return;
+
+  let scene, camera, renderer, spineGroup;
+  try {
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+    camera.position.set(0, 0.2, 10);
+    camera.lookAt(0, 0, 0);
+
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    const maxDpr = window.innerWidth < 720 ? 1.5 : 2;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
+
+    const mainMat = new THREE.MeshBasicMaterial({ color: 0xd4a94a, wireframe: true, transparent: true, opacity: 0.85 });
+    const softMat = new THREE.MeshBasicMaterial({ color: 0xeaeaea, wireframe: true, transparent: true, opacity: 0.18 });
+
+    spineGroup = new THREE.Group();
+    const add = (geo, pos, rot=[0,0,0]) => {
+      const m = new THREE.Mesh(geo, mainMat);
+      m.position.set(...pos); m.rotation.set(...rot);
+      spineGroup.add(m);
+      const g = new THREE.Mesh(geo, softMat);
+      g.position.set(...pos); g.rotation.set(...rot); g.scale.setScalar(1.03);
+      spineGroup.add(g);
+    };
+    add(new THREE.SphereGeometry(0.55, 16, 12), [0.1, 3.55, 0]);
+    const vcount = 24, vtop = 2.9, vbottom = -2.8;
+    for (let i = 0; i < vcount; i++) {
+      const t = i / (vcount - 1);
+      const y = vtop + (vbottom - vtop) * t;
+      const xC = Math.sin(t * Math.PI * 1.4 - 0.2) * 0.28;
+      const sc = 0.48 + t * 0.52;
+      add(new THREE.CylinderGeometry(0.4 * sc, 0.44 * sc, 0.2 * sc, 10), [xC, y, 0]);
+      const procLen = 0.52 * sc;
+      const procGeo = new THREE.CylinderGeometry(0.035, 0.03, procLen, 6);
+      add(procGeo, [xC - 0.44 * sc - procLen / 2, y, 0], [0, 0, Math.PI/2]);
+      add(procGeo, [xC + 0.44 * sc + procLen / 2, y, 0], [0, 0, Math.PI/2]);
+      const spinLen = 0.38 * sc;
+      add(new THREE.CylinderGeometry(0.04, 0.03, spinLen, 6), [xC, y - 0.04, -0.28 * sc - spinLen / 2], [Math.PI/2, 0, 0]);
+    }
+    add(new THREE.CylinderGeometry(0.32, 0.62, 0.9, 4), [-0.05, vbottom - 0.7, 0], [0, Math.PI/4, 0]);
+
+    const torus = new THREE.Mesh(new THREE.TorusGeometry(1.35, 0.018, 8, 64), new THREE.MeshBasicMaterial({ color: 0xf2c15e, wireframe: true, transparent: true, opacity: 0.22 }));
+    torus.rotation.x = Math.PI/2;
+    spineGroup.add(torus);
+    scene.add(spineGroup);
+
+    // Particles
+    const pGeo = new THREE.BufferGeometry();
+    const pCount = 60;
+    const pPos = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const r = 1.8 + Math.random() * 1.2;
+      pPos[i*3] = Math.cos(theta) * r;
+      pPos[i*3+1] = (Math.random() - 0.5) * 6;
+      pPos[i*3+2] = Math.sin(theta) * r;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xf2c15e, size: 0.022, transparent: true, opacity: 0.5, sizeAttenuation: true })));
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      renderer.setSize(rect.width, rect.height, false);
+      camera.aspect = rect.width / rect.height;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Scroll-driven rotation
+    let targetRotY = 0;
+    ScrollTrigger.create({
+      trigger: '#anatomy',
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: self => { targetRotY = self.progress * Math.PI * 2; }
+    });
+
+    // Hotspot focus (zoom to Y)
+    let focusY = 0, targetFocusY = 0;
+    document.querySelectorAll('.anatomy-hot').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.anatomy-hot').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        targetFocusY = parseFloat(btn.dataset.y) || 0;
+      });
+    });
+
+    const start = performance.now();
+    let currentRotY = 0;
+    function animate() {
+      const t = (performance.now() - start) * 0.001;
+      currentRotY += (targetRotY - currentRotY) * 0.05;
+      focusY += (targetFocusY - focusY) * 0.06;
+      spineGroup.rotation.y = currentRotY;
+      spineGroup.rotation.z = Math.sin(t * 0.35) * 0.03;
+      spineGroup.position.y = -focusY * 0.5;
+      camera.position.y = focusY * 0.3;
+      camera.lookAt(0, focusY * 0.3, 0);
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate();
+  } catch (e) {
+    console.warn('Three.js spine failed, showing fallback', e);
+    if (fallback) fallback.classList.add('show');
+    if (canvas) canvas.style.display = 'none';
+  }
+})();
+
+</script>
+</body>
+</html>
