@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lykosmethod.com/sitemap.xml
+Sitemap: https://lykosmethodhealth.com/sitemap.xml
