@@ -1865,6 +1865,77 @@ footer ul a:hover { color: var(--gold); }
   .hero-title .word > span { transform: none; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lykosmethod.com/#enzo",
+      "name": "Enzo Nievas",
+      "jobTitle": "Profesor de Educación Física · Personal Trainer",
+      "url": "https://lykosmethod.com/",
+      "sameAs": [
+        "https://instagram.com/lykosmethod"
+      ],
+      "knowsAbout": ["Biomecánica", "Entrenamiento de fuerza", "Rehabilitación", "Entrenamiento personalizado"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://lykosmethod.com/#business",
+      "name": "Lykos Method",
+      "image": "https://lykosmethod.com/og-image.jpg",
+      "logo": "https://lykosmethod.com/logo.jpg",
+      "url": "https://lykosmethod.com/",
+      "telephone": "+54 9 261 625 7645",
+      "email": "hola@lykosmethod.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mendoza",
+        "addressRegion": "Mendoza",
+        "addressCountry": "AR"
+      },
+      "areaServed": "Worldwide",
+      "founder": { "@id": "https://lykosmethod.com/#enzo" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://lykosmethod.com/#service",
+      "serviceType": "Entrenamiento online personalizado",
+      "provider": { "@id": "https://lykosmethod.com/#business" },
+      "description": "Método de entrenamiento online basado en biomecánica aplicada, fuerza inteligente y movimiento eficiente. Incluye anamnesis, planificación, feedback diario y seguimiento quincenal.",
+      "areaServed": "Worldwide",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Plan 01 — Rutina personalizada",
+          "description": "Planificación única diseñada a medida, con indicaciones técnicas y videos de ejecución. Sin seguimiento posterior.",
+          "price": "55000",
+          "priceCurrency": "ARS",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Plan 02 — Planificación mensual",
+          "description": "Rutina personalizada + feedback diario + seguimiento quincenal + balance mensual.",
+          "price": "120000",
+          "priceCurrency": "ARS",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Plan 03 — Plan integral",
+          "description": "Todo lo del Plan 02 más participación de nutricionista y kinesiólogo asociados.",
+          "price": "200000",
+          "priceCurrency": "ARS",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
