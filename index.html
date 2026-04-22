@@ -1938,6 +1938,18 @@ footer ul a:hover { color: var(--gold); }
   ]
 }
 </script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: 'Lykos Method — Home',
+    page_location: 'https://lykosmethod.com/'
+  });
+</script>
 </head>
 <body>
 
@@ -3560,6 +3572,27 @@ const I18N = {
     if (fallback) fallback.classList.add('show');
     if (canvas) canvas.style.display = 'none';
   }
+})();
+
+/* ========== GA4 event tracking ========== */
+(function tracking() {
+  if (typeof gtag !== 'function') return;
+  document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+    a.addEventListener('click', () => {
+      gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: a.getAttribute('href') });
+    });
+  });
+  document.querySelectorAll('.plan .btn').forEach(a => {
+    a.addEventListener('click', () => {
+      const plan = a.closest('.plan')?.dataset.plan || 'unknown';
+      gtag('event', 'plan_cta', { event_category: 'conversion', event_label: 'plan_' + plan });
+    });
+  });
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.addEventListener('click', () => {
+      gtag('event', 'lang_switch', { event_category: 'ui', event_label: b.dataset.setlang });
+    });
+  });
 })();
 
 </script>
