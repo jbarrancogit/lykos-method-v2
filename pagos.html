@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Pagá tu plan Lykos Method — Mercado Pago (ARS) o wallet cripto argentina (USD)." />
+<meta name="robots" content="noindex, follow" />
+<title>Pagar — LYKOS METHOD</title>
+<link rel="icon" href="logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#060606;--bg-2:#0b0b0b;--line:#1c1c1c;--line-2:#2a2a2a;--gold:#d4a94a;--gold-b:#f2c15e;--text:#f6f6f6;--text-2:#b0b0b0;--text-3:#6a6a6a;--display:"Fraunces",serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1.5rem}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:720px;margin:auto;display:grid;gap:2rem}
+.back{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);transition:color .3s ease}
+.back:hover{color:var(--gold)}
+h1{font-family:var(--display);font-weight:300;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.03em;line-height:1.1}
+h1 em{font-style:italic;color:var(--gold-b)}
+.lead{color:var(--text-2);font-size:1.05rem;max-width:58ch}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
+.eyebrow::before{content:"";width:1.8rem;height:1px;background:var(--gold)}
+.option{background:var(--bg-2);border:1px solid var(--line);padding:1.75rem;display:grid;gap:1rem;transition:border-color .3s ease}
+.option:hover{border-color:var(--gold)}
+.option h3{font-family:var(--display);font-weight:300;font-size:1.5rem;letter-spacing:-.02em}
+.option h3 em{color:var(--gold-b)}
+.option p{color:var(--text-2);font-size:.95rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.5rem;border:1px solid var(--gold);background:var(--gold);color:var(--bg);font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;transition:all .3s ease;justify-self:start}
+.btn:hover{background:var(--gold-b);border-color:var(--gold-b)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+.foot{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--text-3);text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="back">← Volver al sitio</a>
+
+  <header>
+    <span class="eyebrow">Plan 01 · pago único</span>
+    <h1>Pagar <em>Rutina personalizada</em></h1>
+    <p class="lead">Elegí el medio que te quede mejor. Ambos son pagos únicos por el mismo plan. Una vez confirmado, Enzo te escribe al WhatsApp para arrancar con la anamnesis.</p>
+  </header>
+
+  <section id="plan1">
+    <article class="option" id="mp">
+      <span class="eyebrow">Opción A · ARS</span>
+      <h3>Mercado <em>Pago</em></h3>
+      <p>Pagá con tarjeta, transferencia, dinero en cuenta MP o efectivo en Pago Fácil / Rapipago. $55.000 ARS.</p>
+      <!-- REEMPLAZAR URL cuando Enzo pase el Link de Pago real de MP -->
+      <a href="https://mpago.la/LINK_MP_PLAN01_PENDIENTE" target="_blank" rel="noopener" class="btn">Pagar con Mercado Pago →</a>
+    </article>
+
+    <article class="option" id="cripto" style="margin-top:1.25rem;">
+      <span class="eyebrow">Opción B · USD</span>
+      <h3>Wallet <em>cripto argentina</em></h3>
+      <p>USDT / USDC / DAI. USD 50. Red Polygon o BSC (bajas comisiones). Una vez hecho el envío, mandame el hash por WhatsApp y confirmamos.</p>
+      <!-- REEMPLAZAR con dirección/QR de Lemon, Belo o Ripio cuando Enzo elija la wallet -->
+      <a href="https://wa.me/5492616257645?text=Hola%20Enzo%2C%20quiero%20pagar%20Plan%2001%20en%20USD%20cripto%20%E2%80%94%20%C2%BFme%20pas%C3%A1s%20la%20wallet%3F" target="_blank" rel="noopener" class="btn ghost">Coordinar cripto por WhatsApp →</a>
+    </article>
+  </section>
+
+  <p class="foot">© 2026 Lykos Method · pago seguro</p>
+</div>
+</body>
+</html>
